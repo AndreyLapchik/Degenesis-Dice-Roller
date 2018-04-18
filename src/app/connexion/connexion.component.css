@@ -1,0 +1,61 @@
+.containerCentre, .containerForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    margin: auto;
+    height: 100%;
+    padding: 0;
+}
+
+.containerCentre > *, .containerForm > * {
+    width: 100%;
+}
+
+.containerCentre {
+    padding: 0 1%;
+}
+
+form button {
+    margin-top: 1%;
+    width: 82%;
+    max-width: 390px;
+}
+
+.elemLogo {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+.elemLogo img { 
+    width: 10%;
+    min-width: 25px;
+}
+
+.elemTitre { margin-bottom: .8em }
+h2, h3, h4 {
+    text-align: center;
+    margin-bottom: 1px;
+}
+h3, h4 { margin-top: 1px }
+
+mat-form-field {
+    margin-bottom: 1%;
+}
+
+.spinnerAtt { margin: 5px 0 }
+
+.btAutValide {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+/*Responsive*/
+
+/* gestion hauteur */
+@media screen and (max-height: 580px) { .elemTitre { margin-bottom: .7em } }
+@media screen and (max-height: 520px) { .elemTitre { margin-bottom: .5em } }
+@media screen and (max-height: 420px) { .elemTitre { margin-bottom: .4em } }

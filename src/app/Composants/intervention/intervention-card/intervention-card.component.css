@@ -1,0 +1,113 @@
+.card {
+    margin-bottom: 20px;
+}
+
+mat-accordion {
+    width: 100%;
+}
+
+.button-submit {
+    width: 100%;
+    background-color: white;
+    font-weight: bolder;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#texteHeader {
+    width: 100%;
+}
+
+mat-card-title, mat-card-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;   
+}
+
+mat-card-title .titleElem {
+    font-weight: bolder;
+}
+
+.carte {
+    width: 100%;
+    height: 300px;
+}
+
+iframe {
+
+    width: 100%;
+    height: 100%;
+}
+
+.description {
+    width: 100%;
+    height: 100%;
+    /* align-content: flex-start;
+    align-items: baseline; */
+}
+
+.ligne {
+    display: inline-flex;
+    margin-top: 0px;
+}
+
+mat-raised-button {
+    font-weight: bolder;
+    display : flex;    
+}
+
+.example-radio-group .example-radio-button  {
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+    margin: 5px;
+}
+
+mat-expansion-panel {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.mat-list-item-content {
+    padding: 0;
+}
+
+
+
+.example-full-width {
+    width: 100%;
+  }
+
+.action {
+    display: flex;
+}
+
+mat-expansion-panel {
+    margin-bottom: 0;
+}
+
+.action .button {
+    text-decoration: inherit;
+    flex: 1;
+    margin-top: 5px;
+}
+
+/*Responsive*/
+/* gestion largeur */
+/* @media screen and (max-width: 250px) {   
+    mat-card-actions button {
+        margin-bottom: 1.8%;
+    }
+} */
+
+/* gestion hauteur */
+/* @media screen and (max-height: 650px), screen and (max-width: 250px) {   
+    mat-card { margin-bottom: 4px }
+    mat-card-subtitle { margin-bottom: 3px }    
+    mat-card-content { margin-bottom: 2px }
+}
+
+@media screen and (max-height: 420px), screen and (max-width: 250px) {   
+    mat-card-subtitle { margin-bottom: 2px }    
+    mat-card-content { margin-bottom: 1px }
+} */

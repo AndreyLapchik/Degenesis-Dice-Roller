@@ -1,0 +1,137 @@
+<div class="body">
+    <mat-accordion>
+        <form #f1="ngForm">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header [style.background-color]="f1.valid ? '#8fff8f' : ''">
+                    <mat-panel-title>
+                        <b>MOTIF D'INTERVENTION *</b>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-radio-group #motifGroup class="example-radio-group" [(ngModel)]="intervention.motif" (change)="intervention.obsmotif = ''"
+                    name="motif" required change cdkFocusInitial>
+                    <mat-radio-button class="example-radio-button" *ngFor="let motif of motifs" [value]="motif.value">
+                        {{motif.label}}
+                    </mat-radio-button>
+                </mat-radio-group>
+
+                <mat-form-field class="example-full-width" *ngIf="intervention.motif == '8'">
+                    <textarea matInput placeholder="Laissez un commentaire" [(ngModel)]="intervention.obsmotif" name="obsmotif" #obsmotif maxlength="100"
+                        required></textarea>
+                    <mat-hint align="end">{{obsmotif.value.length}} / 100</mat-hint>
+                </mat-form-field>
+            </mat-expansion-panel>
+        </form>
+
+        <form #f2="ngForm">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header  [style.background-color]="f2.valid ? '#8fff8f' : ''">
+                    <mat-panel-title>
+                        <b>RESULTAT DU CONTROLE *</b>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-radio-group class="example-radio-group" [(ngModel)]="intervention.resultat" (change)="intervention.obsresultat = ''"
+                    name="resultat" required>
+                    <mat-radio-button class="example-radio-button" *ngFor="let resultat of resultats" [value]="resultat.value">
+                        {{resultat.label}}
+                    </mat-radio-button>
+                </mat-radio-group>
+
+                <mat-form-field class="example-full-width" *ngIf="intervention.resultat == '9'">
+                    <textarea matInput placeholder="Laissez un commentaire" [(ngModel)]="intervention.obsresultat" name="obsresultat" #obsresultat
+                        maxlength="100" required></textarea>
+                    <mat-hint align="end">{{obsresultat.value.length}} / 100</mat-hint>
+                </mat-form-field>
+            </mat-expansion-panel>
+        </form>
+
+
+        <form #f3="ngForm" >
+            <mat-expansion-panel>
+                <mat-expansion-panel-header [style.background-color]="f3.valid ? '#8fff8f' : ''">
+                    <mat-panel-title>
+                        <b>CIRCULATION *</b>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-radio-group class="example-radio-group" [(ngModel)]="intervention.circulation" name="circulation" required>
+                    <mat-radio-button class="example-radio-button" *ngFor="let circulation of circulations" [value]="circulation.value">
+                        {{circulation.label}}
+                    </mat-radio-button>
+                </mat-radio-group>
+            </mat-expansion-panel>
+        </form>
+
+        <form #f4="ngForm">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header [style.background-color]="f4.valid ? '#8fff8f' : ''">
+                    <mat-panel-title>
+                        <b>COMPTE RENDU COMPLEMENTAIRE *</b>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="Personne sur place (nom)" (change)="personneChange()" [(ngModel)]="intervention.correspondant"
+                        name="personne" #personne maxlength="60"></textarea>
+                    <mat-hint align="end">{{personne.value.length}} / 60</mat-hint>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="Observations" [(ngModel)]="intervention.observation" name="obs" #observation maxlength="250"
+                        required></textarea>
+                    <mat-hint align="end">{{observation.value.length}} / 250</mat-hint>
+                </mat-form-field>
+            </mat-expansion-panel>
+        </form>
+
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <b>PHOTOS</b>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="gallery">
+                <div class="imgPhoto" *ngFor="let photo of photos">
+                    <img [src]="photo" width="80px" height="80px">
+                </div>
+            </div>
+
+            <input style="display: none" type="file" accept="image/*" pattern="*.jpg *.png" (change)="changeListener($event)" #fileInput>
+            <button mat-raised-button (click)="fileInput.click()">Ajouter une photo</button>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel >
+            <mat-expansion-panel-header [style.background-color]=" !signatures || signatures.first.isEmpty() || (personne.value.length > 0 && signatures.last.isEmpty()) ? '' : '#8fff8f'">
+                <mat-panel-title>
+                    <b>SIGNATURE *</b>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="sig-container" #div1>
+                <div fxLayout="row">
+                    <b>Signature de l'intervenant</b>
+                </div>
+                <signature-pad #signaturePad1  (onBeginEvent)="drawStart()" (onEndEvent)="drawCompleteInterv()"></signature-pad>
+                <br>
+                <button class="clear" mat-raised-button type="button" (click)="signaturePad1.clear()">Effacer</button>
+            </div>
+
+            <div class="sig-container" #div2 [hidden]="personne.value.length == 0">
+                <div fxLayout="row">
+                    <b>Signature de la personne sur place</b>
+                </div>
+                <div fxLayout="row">
+                    <signature-pad #signaturePad2 (onBeginEvent)="drawStart()" (onEndEvent)="drawCompleteClient()"></signature-pad>
+                </div>
+                <button class="clear" mat-raised-button type="button" (click)="signaturePad2.clear()">Effacer</button>
+            </div>
+        </mat-expansion-panel>
+
+        <div mat-dialog-actions>
+            <button mat-raised-button mat-dialog-close (click)="onSaveClick()">Sauver</button>
+            <button mat-raised-button mat-dialog-close (click)="onEnvoyerClick()" mat-raised-button
+            [disabled]="!f1.valid || !f2.valid || !f3.valid || !f4.valid  || !signatures
+             || signatures.first.isEmpty() || (personne.value.length > 0 && signatures.last.isEmpty())">
+                Envoyer
+            </button>
+        </div>
+
+    </mat-accordion>
+</div>

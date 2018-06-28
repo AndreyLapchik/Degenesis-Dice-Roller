@@ -1,0 +1,70 @@
+/* .body {
+    overflow: auto;
+} */
+
+.mat-dialog-container {
+    padding: 12px;
+}
+
+
+mat-raised-button {
+    font-weight: bolder;
+    display : flex;    
+}
+
+.example-radio-group .example-radio-button  {
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+    margin: 5px;
+}
+
+
+mat-expansion-panel {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+mat-radio-button {
+    display: flex;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.example-full-width {
+    width: 100%;
+}
+
+.sig-container {
+    text-align: center;
+    align-content: center;
+    background-color: rgba(0, 0, 0, 0.03);
+    margin-bottom: 5px;
+}
+
+.clear {
+    margin-bottom: 5px;
+}
+
+mat-dialog-action {
+    margin-bottom: 0;
+}
+
+.action {
+    display: flex;
+}
+
+.action .button {
+    text-decoration: inherit;
+    flex: 1;
+}
+

@@ -1,0 +1,16 @@
+.example-radio-group .example-radio-button  {
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+    margin: 5px;
+}
+
+p {
+    font-weight: bold;
+    margin: 8px 0px;
+}
+
+.mat-dialog-title {
+    margin: 0px;
+
+}

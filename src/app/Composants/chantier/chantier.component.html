@@ -1,0 +1,35 @@
+    <mat-toolbar class="header">
+        <mat-toolbar-row>
+            <span class="titre">LISTE DES CHANTIERS</span>
+            <div class="space-filler"></div>
+            <span class="search">
+                    <input class="search-input" [(ngModel)]="search" placeholder="Recherche" type="search" aria-label="Chantier">
+            </span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div class="body">
+        <div class="desktop">
+            <mat-card class ="search-card">
+                <mat-card-title>
+                    <b>Recherche</b>
+                </mat-card-title>
+                <mat-card-content>
+                    <mat-form-field>
+                        <input [(ngModel)]="search" matInput type="search" placeholder="Nom, ville, code postal..." aria-label="Chantier">
+                    </mat-form-field>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="content">
+            <mat-accordion class="firstAccordion">
+                    <div class="column">
+                        <app-chantier-card #target [chantier]="chantier" *ngFor="let chantier of (chantiers | async | chantierSearch : search)">
+                        </app-chantier-card>
+                    </div>
+            </mat-accordion>
+            <div class="contSpin" *ngIf="spinnerVisible">
+                <mat-spinner strokeWidth="2.6" diameter="42"></mat-spinner>
+            </div>
+        </div>
+    </div>

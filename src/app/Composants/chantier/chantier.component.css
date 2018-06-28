@@ -1,0 +1,144 @@
+mat-toolbar-row {
+    height: 62px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.header {
+    background-color: black;
+    color: #FDF048;
+}
+
+.titre {
+    flex: 1;
+}
+
+.space-filler {
+    flex-grow: 1;
+}
+
+.search {
+    flex: 1;
+    width: 60%;
+    height: 30px;
+}
+
+.search-input {
+    color: #333;
+    border: none;
+    border-radius: 100px;
+    background-color: #fafafa;
+    padding: 5px 10px;
+    width: 100%;
+    max-width: 240px;
+    vertical-align: text-top;
+}
+
+.body {
+    position: fixed;
+    top: 142px;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(255,255,255, 0.7)
+}
+
+.desktop {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 250px;
+    height: 100%;
+    position: fixed;
+}
+
+.search-card {
+    margin: 5px;
+}
+
+.content {
+    margin-left: 250px;
+    padding: 20px 20px 0 20px;
+    height: 100%;
+    overflow: auto;
+    width: stretch;
+    background-color: transparent;
+}
+
+.contSpin {
+    display: flex;
+    justify-content: center;
+}
+
+.column {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+mat-sidenav {
+    background-color: rgb(235, 235, 235);
+
+}
+
+app-chantier-card {
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 450px) {
+    .space-filler {
+        display: none;
+    }
+    mat-toolbar-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .titre {
+        height: 30%;
+    }
+
+    .search-input {
+        height: 70%;
+    }
+}
+
+/* Jusqu'a 1000px le fiches prennent toute la place puis apres se divise en deux */ 
+@media screen and (max-width:1200px) {
+    app-chantier-card {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:850px) {
+    .desktop {
+        display: none;
+        width: 0;
+        margin: 0;
+    }
+
+    .content {
+        padding: 10px 10px 0 10px;
+        margin-left: 0;
+    }
+}
+
+@media screen and (min-width:800px) {
+    .body {
+        top: 124px;
+    }
+}
+
+/*  A partir de 720, on cache le bouton*/
+@media screen and (min-width:850px) {
+    .menu {
+        display: none;
+    }
+    .search {
+        display: none;
+    }
+    .mobile {
+        display: none;
+        width: 0;
+    }
+}
+

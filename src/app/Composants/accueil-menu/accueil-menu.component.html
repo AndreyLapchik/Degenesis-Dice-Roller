@@ -1,0 +1,92 @@
+<!-- <div class="header">
+    AGENCE {{util.code}}
+    <button mat-button color="primary" type="button" class="btLienAccueil" (click)="_data.logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Déconnexion</span>
+    </button>
+</div>
+
+<div class="row" *ngIf="LIENS_ACCUEIL.length">
+    <div *ngFor="let lien of LIENS_ACCUEIL">
+        <button mat-button color="primary" type="button" class="btLienAccueil" routerLink="{{lien.lien}}">
+            <div class="conteneurLienAccueil">
+                <mat-icon class="iconeLienAccueil">{{lien.logo}}</mat-icon>
+                <span class="texteLienAccueil">{{lien.texte}}</span>
+            </div>
+        </button>
+    </div>
+</div> -->
+
+
+<nav class="large-header">
+
+    <button mat-button type="button">
+        <img height=60px width=60px src="..\assets\icons\DAT Security.png">
+        <span> DAT SECURITY </span>
+    </button>
+
+    <!-- <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="/">
+        <span class="mat-button-wrapper">DAT SECURITY</span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+    </a> -->
+
+    <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="/accueil/chantier">
+        <span class="mat-button-wrapper">CHANTIERS</span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+    </a>
+    <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="/accueil/intervention">
+        <span class="mat-button-wrapper">MES INTERVENTIONS</span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+    </a>
+    <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="/accueil/information">
+        <span class="mat-button-wrapper">MES INFORMATIONS</span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+    </a>
+
+    <div class="flex-spacer"></div>
+    <!-- <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="">
+        <span class="mat-button-wrapper">AGENCE {{util.code}}</span>
+        <span class="mat-button-wrapper"> {{ util.nom | uppercase}}</span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+    </a> -->
+
+    <button mat-button color="white" type="button" class="btLienAccueil" (click)="interService.logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span> Déconnexion </span>
+    </button>
+</nav>
+
+<nav class="small-header">
+    <button mat-button type="button">
+        <img height=43px width=43px src="..\assets\icons\DAT Security.png">
+        <span> DAT SECURITY </span>
+    </button>
+    <div class="flex-spacer"></div>
+    <button mat-button color="white" type="button" class="btLienAccueil" (click)="interService.logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span> Déconnexion </span>
+    </button>
+</nav>
+
+<nav class="small-header">
+    <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="/accueil/chantier">
+        <span class="mat-button-wrapper">CHANTIER</span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+    </a>
+    <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="/accueil/intervention">
+        <span class="mat-button-wrapper">INTERVENTIONS</span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+    </a>
+    <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="/accueil/information">
+        <span class="mat-button-wrapper">INFORMATIONS</span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+    </a>
+</nav>

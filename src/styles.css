@@ -1,1 +1,244 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+/* You can add global styles to this file, and also import other style files */
+/* Application-wide Styles */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+html {
+    min-width: 320px;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-image: url(background.jpg);
+    background-size: cover;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, Noto, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.cdk-overlay-pane {
+    max-width: 95vw;
+}
+
+.blublu .mat-dialog-container {
+    padding: 12px 12px 24px 12px;
+}
+
+
+
+
+.blublu .cdk-overlay-pane\ my-dialog {
+    max-width: 95vw;
+
+}
+
+.fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+
+/* html, body, mat-sidenav-container {
+    width: 100%;
+    height: 99.9%; 
+} */
+
+ /* body, mat-sidenav-container, mat-sidenav-content {
+    margin: 0;
+    padding: 0;
+} */
+
+mat-sidenav {
+    min-width: 123px;
+    max-width: 420px;
+    width: 72%;
+    padding: 4px 0px 7px;
+    margin: 0;
+}
+
+
+/* .basic-container {
+    margin: 0;
+    padding: 0;
+}   */
+
+
+/* https://www.w3schools.com/css/css_margin.asp */
+.container {
+    margin: 42px 0.5% 0.42%;
+    /* padding: 4px 2px 3px 1px; */
+}
+
+/* everywhere else */
+/* * {
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, Noto, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', Arial, sans-serif
+} */
+
+.icoCouleurDesact, .icoCouleurDesactB, .elemInfoEnteteDetail {
+    color: rgb(145, 145, 145); /* Gris = placeholder de recherche */
+}
+
+.boutonAction {
+    margin: 0;
+    padding: 0;
+}
+
+/* .container button.boutonFond:hover {
+    color: #283593;
+} */
+
+/* body>.toolBar {position: fixed} */
+
+/* 
+.container > * {
+    width: 100%;
+} */
+
+/*
+#navBar {
+    margin-bottom: 5px; *//*55px;*/
+/*} */
+
+
+.material-icons {
+    vertical-align: middle;
+}
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; } /* Preferred icon size */
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+mat-form-field button[mat-button] {
+    padding-left: 3.3px;
+    padding-right: 7.8px;
+}
+
+  
+h1 { 
+    color: rgb(0, 112, 150);
+}  
+h2, h3, .containerLienSoc a {
+    color: #283593; /*rgb(8, 191, 233);*/
+}
+h2, h3 {
+    /*color: #444;*/
+    font-weight: lighter;
+}
+h4 {
+    font-weight: lighter;
+}
+
+
+.containerLienSoc a {
+    text-decoration: none;
+    font-weight: lighter;
+    font-size: 0.9rem;
+}
+
+.containerLienSoc a:hover span, .containerLienSoc a:hover h4 {
+    text-decoration: underline;
+    color: #101749;
+}
+
+
+.elemTypeMission {
+    color: white;
+}
+.elemTypeMission.merch {
+    color: #EC407A;
+    background-color: #EC407A;
+}
+.elemTypeMission.anima {
+    color: orange;
+    background-color: orange;
+}
+.elemTypeMission.saiso {
+    color: #1E88E5;
+    background-color: #1E88E5;
+}
+.elemTypeMission.perma {
+    color: #4CAF50;
+    background-color: #4CAF50;
+}
+.elemTypeMission.autre {
+    color: rgb(84, 91, 97);
+    background-color: rgb(84, 91, 97);
+}
+.elemTypeMission.texte {
+    background-color: unset;
+}
+.elemTypeMission.pastille {
+    color: white;
+
+    font-family: Monaco, "DejaVu Sans Mono", "Lucida Console", "Andale Mono", monospace;
+
+    border-radius: 50%;
+
+    /* margin-bottom: -8px; */
+    padding: 4px 7px;
+}
+  
+
+
+/*Responsive*/
+
+/* gestion hauteur */
+@media screen and (max-height: 580px) {   
+    h2 {
+        font-size: 1.4em;
+    }
+
+    h3 {
+        font-size: 1.1em;
+    }
+}
+@media screen and (max-height: 520px) {
+    h2 {
+        font-size: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.0em;
+    }
+
+    h4 {
+        font-size: .8em;
+    }
+}
+@media screen and (max-height: 420px) {
+    h2 {
+        font-size: 1.1em;
+    } 
+
+    h3 {
+        font-size: .9em;
+    }
+
+    h4 {
+        font-size: .7em;
+    }
+}
+
+
+
+button.mat-menu-item {
+    line-height: 24px !important;
+}
+a.mat-menu-item > mat-icon {
+    margin-bottom: 14px;
+}
+.mat-icon svg {
+    height: 24px;
+    width: 24px;
+}

@@ -1,0 +1,36 @@
+<div class="contenu" >
+    <div class="containerCentre">
+        <form (ngSubmit)="onSubmit()" class="containerForm">
+
+            <div class="logo">
+                <img src="..\..\assets\icons\DAT Security.png" alt="icon" />
+            </div>
+
+            <div class="titre">
+                <h2>Authentification de {{login}}
+                </h2>
+            </div>
+
+            <mat-form-field>
+                <input [(ngModel)]="login" name="login" tabindex="1" #text matInput autocomplete="off" required placeholder="Login utilisateur" autofocus/>
+                <button tabindex="100" mat-button matSuffix mat-icon-button aria-label="Effacer" (click)="text.value = ''">
+                    <mat-icon>close</mat-icon>
+                </button>
+                <mat-error *ngIf="loginError">Erreur</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input [(ngModel)]="mdp" name="mdp" tabindex="2" matInput required [type]="mdpVisible ? 'text' : 'password'" placeholder="Mot de passe"
+                />
+                <mat-icon matSuffix (click)="mdpVisible = !mdpVisible">{{mdpVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <mat-error *ngIf="mdpError">Erreur</mat-error>
+            </mat-form-field>
+
+            <button tabindex="10" type="submit" mat-raised-button title="S'authentifier" class="btAutValide">
+                <mat-spinner *ngIf="spinnerVisible" class="spinnerAtt" strokeWidth="2.6" diameter="26"></mat-spinner>
+                <span *ngIf="!spinnerVisible">VALIDER</span>
+            </button>
+
+        </form>
+    </div>
+</div>

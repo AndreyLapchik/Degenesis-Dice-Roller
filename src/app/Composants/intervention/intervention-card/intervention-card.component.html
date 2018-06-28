@@ -1,0 +1,68 @@
+<div class="card">
+    <mat-accordion>
+        <mat-expansion-panel class="enCours">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{intervention.nom | uppercase}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    {{intervention.dateinter | dateTime | date : 'shortDate'}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <h3>Informations</h3>
+            <div class="description">
+                <div>
+                    <mat-icon>home</mat-icon>
+                    <p class="ligne">
+                        {{intervention.adr1}} {{intervention.adr2}} {{intervention.adr3 }}
+                        <br> {{intervention.cp}} {{intervention.ville}}
+                    </p>
+                </div>
+                <div *ngIf=intervention.dateappel>
+                    <mat-icon>watch</mat-icon>
+                    <p class="ligne">
+                        Appelé à {{intervention.dateappel | dateTime | date : 'mediumTime'}}
+                    </p>
+                </div>
+                <div *ngIf=intervention.datearrive>
+                    <mat-icon>watch</mat-icon>
+                    <p class="ligne">
+                        Arrivé à {{intervention.datearrive | dateTime | date : 'mediumTime'}}
+                    </p>
+                </div>
+                <div *ngIf=intervention.datedepart>
+                    <mat-icon>watch</mat-icon>
+                    <p class="ligne">
+                        Parti à {{intervention.datedepart| dateTime | date : 'mediumTime'}}
+                    </p>
+                </div>
+
+            </div>
+        </mat-expansion-panel>
+        <div class="action" *ngIf="intervention.statut == '1' || intervention.statut == '2'">
+            <button class="button" mat-raised-button (click)="ouvrirCarte()"> Ouvrir la carte</button>
+        </div>
+        <!-- <mat-expansion-panel *ngIf="intervention.statut == '1' || intervention.statut == '2'" (opened)="carteOpened()">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    CARTE
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="carte">
+                <iframe *ngIf="lienAPI" [src]=sanitizer.bypassSecurityTrustResourceUrl(lienAPI)>
+
+                </iframe>
+            </div>
+        </mat-expansion-panel> -->
+    </mat-accordion>
+
+
+    <div class="actions" [ngSwitch]="true">
+        <div class="action">
+            <button class="button" mat-raised-button (click)="arrive()" *ngSwitchCase="intervention.statut == '1'">Début de l'intervention</button>
+            <button class="button" mat-raised-button (click)="depart()" *ngSwitchCase="intervention.statut == '2'">Fin de l'intervention</button>
+            <button class="button" mat-raised-button (click)="ouvrirFormulaire()" *ngSwitchCase="intervention.statut == '2' || intervention.statut == '3'">
+                Ouvrir le formulaire </button>
+        </div>
+    </div>
+</div>

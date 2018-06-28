@@ -1,0 +1,56 @@
+<mat-toolbar class="header">
+    <mat-toolbar-row>
+      <span class="titre">MES INFORMATIONS</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <div class="body">
+  <!-- <mat-horizontal-stepper class="stepper" *ngIf="!data.utilisateur.infosOk" [linear]="true" #stepper>
+      <mat-step>
+        <form>
+          <ng-template matStepLabel>Vous êtes...</ng-template>
+          <mat-form-field>
+            <input [(ngModel)]="data.utilisateur.nom" name="nom" matInput placeholder="Prénom Nom" #nom maxlength="30" required autofocus>
+            <mat-hint align="end">{{nom.value.length}} / 30</mat-hint>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperNext>Suivant</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Fini</ng-template>
+        <div>
+          <button mat-button matStepperPrevious>Précedent</button>
+          <button mat-button (click)="stepper.reset()">Réinitialiser</button>
+        </div>
+        <mat-card>
+          <mat-card-content>
+            <p>
+              Ces informations seront stockées sur votre appareil.
+            </p>
+            <p>
+              Vous n'aurez plus à les remplir sur vos interventions.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button (click)="enregistrer()">Ok</button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-step>
+    </mat-horizontal-stepper> -->
+
+  <mat-card class="card" *ngIf="data.utilisateur.infosOk">
+    <mat-card-header>
+      <mat-icon class="icon">person</mat-icon>
+
+      <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+    </mat-card-header>
+    <mat-card-content>
+      <b>Bonjour {{data.utilisateur.nom}}</b>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="reinitialiser()">Editer</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

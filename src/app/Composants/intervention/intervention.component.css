@@ -1,0 +1,215 @@
+mat-toolbar-row {
+    height: 62px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.titre {
+    flex: 1;
+}
+
+.header {
+    background-color: black;
+    color: #FDF048;
+}
+
+.space-filler {
+    flex-grow: 1;
+}
+
+.search {
+    flex: 1;
+    width: 60%;
+    height: 30px;
+}
+
+.search-input {
+    color: #333;
+    border: none;
+    border-radius: 100px;
+    background-color: #fafafa;
+    padding: 5px 10px;
+    width: 100%;
+    max-width: 240px;
+    vertical-align: text-top;
+}
+
+.body {
+    position: fixed;
+    top: 142px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgb(255,255,255, 0.7)
+}
+
+.desktop {
+    background-color: rgba(0, 0, 0, 0.5);   
+    width: 250px;
+    height: 100%;
+    position: fixed;
+}
+
+.search-card {
+    margin: 5px;
+}
+
+.noInter {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.interNonValidee {
+    margin-bottom:  10px;
+}
+
+.content {
+    margin-left: 250px;
+    padding: 20px 20px 20px 20px;
+    height: 100%;
+    overflow: auto;
+    width: stretch;
+    background-color: transparent;
+}
+
+.contSpin {
+    display: flex;
+    justify-content: center;
+}
+
+mat-sidenav {
+    background-color: rgb(235, 235, 235);
+}
+
+mat-expansion-panel {
+    margin-bottom: 60px;
+}
+
+@media screen and (max-width: 450px) {
+    .space-filler {
+        display: none;
+    }
+    mat-toolbar-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .titre {
+        height: 30%;
+    }
+    .search-input {
+        height: 70%;
+    }
+}
+
+/* Jusqu'a 1000px le fiches prennent toute la place puis apres se divise en deux */ 
+@media screen and (max-width:1200px) {
+    app-chantier-card {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:850px) {
+    .desktop {
+        display: none;
+        width: 0;
+        margin: 0;
+    }
+    
+    .content {
+        padding: 10px 10px 0 10px;
+        margin-left: 0;
+    }
+}
+
+@media screen and (min-width:800px) {
+    .body {
+        top: 124px;
+    }
+}
+
+/*  A partir de 720, on cache le bouton*/
+@media screen and (min-width:850px) {
+    .menu {
+        display: none;
+    }
+    .search {
+        display: none;
+    }
+    .mobile {
+        display: none;
+        width: 0;
+    }
+}
+
+
+
+mat-expansion-panel {
+    margin-bottom: 10px;
+}
+
+mat-expansion-panel-header {
+    display: flex;
+}
+
+.enCours {
+    background-color: rgb(251, 152, 152);
+    width: 100%;
+    
+}
+
+.aValider {
+    background-color: rgb(251, 202, 102);
+    width: 100%;
+}
+
+.valide {
+    background-color:rgb(152, 251, 152) ;
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+
+#texteHeader {
+    width: 100%;
+}
+
+mat-panel-title {
+    color: black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;   
+}
+
+mat-panel-description {
+    color: BLACK;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;   
+}
+
+
+mat-expansion-panel-title .titleElem {
+    font-weight: bolder;
+}
+
+mat-expansion-panel-subtitle {
+    margin-bottom: 9px;
+}
+
+mat-expansion-panel-content {
+    margin-bottom: 7px;
+}
+
+.gauche {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;   
+}
+
+.droite {
+    display: flex;
+    justify-content: flex-end;   
+}
+
+

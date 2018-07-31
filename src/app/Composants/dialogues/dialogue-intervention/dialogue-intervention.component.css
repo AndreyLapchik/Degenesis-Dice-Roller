@@ -12,6 +12,11 @@ mat-raised-button {
     display : flex;    
 }
 
+.btAuth {
+    display: flex;
+    justify-content: center;
+}
+
 .example-radio-group .example-radio-button  {
     display: flex;
     flex-wrap: wrap;

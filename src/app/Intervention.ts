@@ -41,8 +41,10 @@ export class Intervention {
     signInterTemp: Point[][];
     signClientTemp: Point[][];
 
-    photosTemp?: string[];
-    photos: string[];
+    // photosTemp?: string[];
+    // photos: string[];
+
+    nombd: string;
 
 
 

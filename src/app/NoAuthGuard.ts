@@ -11,12 +11,12 @@ export class NoAuthGuard implements CanActivate {
 
     constructor(
         private data: DataService,
-        private router: Router) {}
+        private router: Router) { }
 
     canActivate(): Observable<boolean> {
         return Observable.create(observer => {
             this.data.login().subscribe(res => {
-                if (res) {
+                if (res.result) {
                     console.log('NoAuthGuard => accueil');
                     observer.next(false);
                     this.router.navigate(['/accueil']);
@@ -26,19 +26,6 @@ export class NoAuthGuard implements CanActivate {
                 }
 
             });
-        }); 
-        // return Observable.create(observer => {
-        //     this.data.getAuthenticatedUser().subscribe((user) => {
-        //         if (user.isAnonymous) {           
-        //             observer.next(true);
-        //             console.log("go 2");
-        //         } else {
-        //             console.log("Redirection vers l'accueil");
-        //             this.router.navigate(['accueil']);  
-        //             observer.next(false); 
-        //         }
-        //         //observer.complete();
-        //     });
-        // });               
+        });
     }
 }

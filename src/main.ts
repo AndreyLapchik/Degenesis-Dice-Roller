@@ -10,8 +10,12 @@ if (environment.production) {
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule);
+  //   if ('serviceWorker' in navigator && environment.production) {
+  //     navigator.serviceWorker.register('/ngsw-worker.js');
+  //   }
+  // }).catch(err => console.log(err));
 //   .then(() => {
-//     registerServiceWorker('sw-default');
+//     registerServiceWorker('sw');
 //   });
 
 // function registerServiceWorker(swName: string) {

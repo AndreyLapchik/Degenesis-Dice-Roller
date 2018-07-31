@@ -14,7 +14,6 @@ import localeFr from '@angular/common/locales/fr';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 
-
 // LOCAL
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -44,7 +43,7 @@ import { DialogueErreurComponent } from './Composants/dialogues/dialogue-erreur/
 
 import { InterventionService } from './Services/intervention.service';
 import { DateTimePipe } from './Pipe/dateTime.pipe';
-
+import { VirtualScrollModule } from 'angular2-virtual-scroll';
 
 import {
   MatAutocompleteModule,
@@ -76,7 +75,8 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatStepperModule
+  MatStepperModule,
+  MatBadgeModule
 } from '@angular/material';
 import { DialogueConfirmationComponent } from './Composants/dialogues/dialogue-confirmation/dialogue-confirmation.component';
 
@@ -124,6 +124,7 @@ import { ChantierService } from './Services/chantier.service';
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
+    MatBadgeModule,
     MatCheckboxModule,
     MatChipsModule,
     MatDatepickerModule,
@@ -157,6 +158,7 @@ import { ChantierService } from './Services/chantier.service';
     HttpModule,
     HttpClientModule,
     SignaturePadModule,
+    VirtualScrollModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [

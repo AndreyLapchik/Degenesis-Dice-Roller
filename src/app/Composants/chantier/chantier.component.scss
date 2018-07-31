@@ -1,0 +1,14 @@
+:host {
+    app-chantier-card {
+        display: inline-block;
+        width: 50%;
+        margin-bottom: 10px;
+    }
+
+    /* Jusqu'a 1000px le fiches prennent toute la place puis apres se divise en deux */ 
+    @media screen and (max-width:1200px) {
+        app-chantier-card {
+            width: 100%;
+        }
+    }
+  }

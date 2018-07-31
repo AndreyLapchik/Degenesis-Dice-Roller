@@ -1,8 +1,10 @@
 import { Component, OnInit, Inject, ViewChildren, QueryList, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Intervention } from '../../../Intervention';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, FormArray, ValidatorFn } from '@angular/forms';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
+import { IndexedDBService } from '../../../Services/indexedDB.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dialogue-intervention',
@@ -11,12 +13,11 @@ import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 })
 
 
-export class DialogueInterventionComponent implements OnInit, AfterViewInit {
+export class DialogueInterventionComponent implements AfterViewInit {
 
   @ViewChildren(SignaturePad) public signatures: QueryList<SignaturePad>;
   @ViewChildren('div1') public div1: QueryList<ElementRef>;
   @ViewChildren('div2') public div2: QueryList<ElementRef>;
-
 
   motifs = [
     { label: 'MES non reçus', value: '1' },
@@ -50,21 +51,74 @@ export class DialogueInterventionComponent implements OnInit, AfterViewInit {
 
   photos: string[] = [];
 
+  form: FormGroup;
+
+  spinnerVisible: Boolean = false;
+  traitementEnCours: Boolean = false;
+
   constructor(
+    public indexedDB: IndexedDBService,
     public dialogRef: MatDialogRef<DialogueInterventionComponent>,
+    public sanitizer: DomSanitizer,
+    private formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.intervention = data.intervention;
     console.log("Envoyé : ");
     console.log(this.intervention);
-    if (this.intervention.photosTemp) {
-      this.photos = this.intervention.photosTemp;
+    // Recuperation des photos dans indexeddb
+    this.indexedDB.getInterPhotos(this.intervention, 0).then(photos => {
+      photos.forEach(photo => {
+        this.photos.push(photo.photo);
+      });
+    }, (err) => {
+      console.log(err);
+    });
+
+    const controls = this.resultats.map(c => new FormControl(false));
+    // On initialise les checkboxs
+    if (this.intervention.resultat) {
+      let resTab = this.intervention.resultat.split(';');
+      resTab.forEach(res => {
+        // '+' permet de transformer une chaine en entier, -1 pour l'index
+        controls[+res - 1].setValue(true);
+      });
+    }
+    this.form = this.formBuilder.group({
+      resultats: new FormArray(controls, this.minSelectedCheckboxes(1))
+    });
+  }
+
+  // Pour éviter l'erreur :  Property 'controls' does not exist on type 'AbstractControl'.
+  get formData() { return <FormArray>this.form.controls.resultats; }
+
+  // On met les valeurs des checkbox dans un tableaux qu'on join avec le char ';'
+  submitResultats() {
+    const selectedResultatsValue = this.form.value.resultats
+      .map((v, i) => v ? this.resultats[i].value : null)
+      .filter(v => v !== null);
+
+    this.intervention.resultat = selectedResultatsValue.join(';');
+    // Si la case 'Autres' n'est pas cochée, on efface obsResultat
+    if (!this.intervention.resultat.includes('9')) {
+      this.intervention.obsresultat = '';
     }
   }
 
-  public ngOnInit() {
+  // Au moins une checkbox séléctionnée
+  public minSelectedCheckboxes(min = 1) {
+    const validator: ValidatorFn = (formArray: FormArray) => {
+      const totalSelected = formArray.controls
+        // get a list of checkbox values (boolean)
+        .map(control => control.value)
+        // total up the number of checked checkboxes
+        .reduce((prev, next) => next ? prev + next : prev, 0);
 
+      // if the total is not greater than the minimum, return the error message
+      return totalSelected >= min ? null : { required: true };
+    };
 
+    return validator;
   }
 
   public ngAfterViewInit() {
@@ -75,7 +129,7 @@ export class DialogueInterventionComponent implements OnInit, AfterViewInit {
     this.signatures.last.set('canvasWidth', 200);
     this.signatures.last.set('canvasHeight', 200);
 
-
+    // Delai pour éviter une erreur
     setTimeout(() => {
       if (this.intervention.signInterTemp) {
         this.signatures.first.fromData(this.intervention.signInterTemp);
@@ -88,35 +142,63 @@ export class DialogueInterventionComponent implements OnInit, AfterViewInit {
 
   //////////////////////// PHOTOS ///////////////////////////////
 
-  changeListener($event): void {
-    this.readThis($event.target);
-  }
-
-  readThis(inputValue: any): void {
-    let file: File = inputValue.files[0];
-    console.log(file.type);
-    
-    if (file.type.includes("image")) {
-      let myReader: FileReader = new FileReader();
-
-      myReader.onloadend = (e) => {
-        this.photos.push(myReader.result);
-        console.log(this.photos);
-      };
-      myReader.readAsDataURL(file);
-
+  changeListener(event): void {
+    this.spinnerVisible = true;
+    this.traitementEnCours = true;
+    let file = event.target.files[0];
+    if (file && file.type.includes("image")) {
+      this.resizeImage(file, 720, 720).then(blob => {
+        let reader = new FileReader();
+        reader.readAsDataURL(blob);
+        reader.onloadend = () => {
+          this.indexedDB.addPhoto(reader.result, this.intervention).then(() => {
+            this.traitementEnCours = false;
+          });
+        };
+        let photoBlob = URL.createObjectURL(blob);
+        this.photos.push(photoBlob);
+      });
     }
-
   }
 
+  resizeImage(file: File, maxWidth: number, maxHeight: number): Promise<Blob> {
+    return new Promise((resolve, reject) => {
+      let image = new Image();
+      image.src = URL.createObjectURL(file);
+      image.onload = () => {
+        let width = image.width;
+        let height = image.height;
+
+        if (width <= maxWidth && height <= maxHeight) {
+          resolve(file);
+        }
+
+        let newWidth;
+        let newHeight;
+
+        if (width > height) {
+          newHeight = height * (maxWidth / width);
+          newWidth = maxWidth;
+        } else {
+          newWidth = width * (maxHeight / height);
+          newHeight = maxHeight;
+        }
+
+        let canvas = document.createElement('canvas');
+        canvas.width = newWidth;
+        canvas.height = newHeight;
+
+        let context = canvas.getContext('2d');
+
+        context.drawImage(image, 0, 0, newWidth, newHeight);
+
+        canvas.toBlob(resolve, file.type);
+      };
+      image.onerror = reject;
+    });
+  }
+  
   //////////////////////// SIGNATURE ///////////////////////////////
-
-  personneChange() {
-    // if (this.intervention.correspondant) {
-    //   this.signatures.last.set('canvasWidth', 200);
-    //   this.signatures.last.set('canvasHeight', 200);
-    // }
-  }
 
   drawCompleteInterv() {
     //console.log(this.signatures.first.toDataURL().split(",")[1]);
@@ -134,13 +216,13 @@ export class DialogueInterventionComponent implements OnInit, AfterViewInit {
   //////////////////////// BOUTONS ///////////////////////////////
 
   onSaveClick(): void {
+    // Pour pouvoir afficher les signatures ulterieurement,
+    // il faut les sauvegarder sous forme de tableaux de points
+    // car la fonction fromDataUrl() ne marche pas correctement.
     this.intervention.signInterTemp = this.signatures.first.toData();
     this.intervention.signClientTemp = this.signatures.last.toData();
     console.log(this.intervention);
 
-    if (this.photos) {
-      this.intervention.photosTemp = this.photos;
-    }
     this.dialogRef.close({ intervention: this.intervention, code: 2 });
   }
 
@@ -148,19 +230,20 @@ export class DialogueInterventionComponent implements OnInit, AfterViewInit {
     if (!this.signatures.first.isEmpty()) {
       this.intervention.signinterv = this.signatures.first.toDataURL();
       this.intervention.signInterTemp = [];
-    }    
+    }
     if (!this.signatures.last.isEmpty() && this.intervention.correspondant !== "") {
       this.intervention.signclient = this.signatures.last.toDataURL();
       this.intervention.signClientTemp = [];
     }
-    if (this.photos) {
-      // On enleve l'entête de l'image pour ne garder que le base64
-      this.intervention.photos = [];
-      this.photos.forEach(photo => {
-        this.intervention.photos.push(photo);  
-      });
-    }
-    this.intervention.photosTemp = [];
     this.dialogRef.close({ intervention: this.intervention, code: 1 });
+  }
+
+  //////////////////////// VALIDATION FORMULAIRE ///////////////////////////////
+
+  get isResultatValide(): boolean {
+    return (
+      (this.formData.valid && !this.intervention.resultat.includes('9')) ||
+      (this.formData.valid && this.intervention.resultat.includes('9') && Boolean(this.intervention.obsresultat))
+    );
   }
 }

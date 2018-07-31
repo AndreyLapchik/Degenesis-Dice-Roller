@@ -17,10 +17,6 @@ export class InterventionCardComponent {
   intervention: Intervention;
   etatForm: boolean = false;
   lienAPI: string;
-  // resultat: string;
-  // obsresultat: string;
-  // motif: string;
-  // obsmotif: string;
 
   motifs = [
     { label: 'MES non reçus', value: '1' },
@@ -69,7 +65,7 @@ export class InterventionCardComponent {
 
   // L'utilisateur arrive sur le lieu de l'intervention
   public arrive() {
-    this._maps.getLocation({ enableHighAccuracy: false, maximumAge: 60000, timeout: 27000 })
+    this._maps.getLocation({ enableHighAccuracy: false, maximumAge: 60000, timeout: 3000 })
       .subscribe(position => {
         if (position && position != '') {
           this.intervention.datearrive = new Date().toISOString();
@@ -78,13 +74,21 @@ export class InterventionCardComponent {
           this.intervention.longdebpoint = position.coords.longitude;
           this.intervention.statut = '2';
           this.interService.pushInterventionToServer(this.intervention);
+        } else {
+          this.intervention.datearrive = new Date().toISOString();
+          this.intervention.statut = '2';
+          this.interService.pushInterventionToServer(this.intervention);
         }
+      }, err => {
+        this.intervention.datearrive = new Date().toISOString();
+        this.intervention.statut = '2';
+        this.interService.pushInterventionToServer(this.intervention);
       });
   }
 
   // L'utilisateur part du lieu de l'intervention
   public depart() {
-    this._maps.getLocation({ enableHighAccuracy: false, maximumAge: 60000, timeout: 27000 })
+    this._maps.getLocation({ enableHighAccuracy: false, maximumAge: 60000, timeout: 3000 })
       .subscribe(position => {
         if (position && position != '') {
           this.intervention.datedepart = new Date().toISOString();
@@ -92,14 +96,22 @@ export class InterventionCardComponent {
           this.intervention.longfinpoint = position.coords.longitude;
           this.intervention.statut = '3';
           this.interService.pushInterventionToServer(this.intervention);
+        } else {
+          this.intervention.datedepart = new Date().toISOString();
+          this.intervention.statut = '3';
+          this.interService.pushInterventionToServer(this.intervention);
         }
+      }, err => {
+        this.intervention.datedepart = new Date().toISOString();
+        this.intervention.statut = '3';
+        this.interService.pushInterventionToServer(this.intervention);
       });
   }
 
-  // L'utilisateur a remplit le formulaire en entier en l'envoie
+  // L'utilisateur a remplit le formulaire en entier et l'envoie
   public Submit() {
     if (this.intervention.statut === '2') {
-      this._maps.getLocation({ enableHighAccuracy: false, maximumAge: 60000, timeout: 27000 })
+      this._maps.getLocation({ enableHighAccuracy: false, maximumAge: 60000, timeout: 3000 })
         .subscribe(position => {
           if (position && position != '') {
             this.intervention.datedepart = new Date().toISOString();
@@ -107,7 +119,15 @@ export class InterventionCardComponent {
             this.intervention.longfinpoint = position.coords.longitude;
             this.intervention.statut = '4';
             this.interService.pushInterventionToServer(this.intervention);
+          } else {
+            this.intervention.datedepart = new Date().toISOString();
+            this.intervention.statut = '4';
+            this.interService.pushInterventionToServer(this.intervention);
           }
+        }, err => {
+          this.intervention.datedepart = new Date().toISOString();
+          this.intervention.statut = '4';
+          this.interService.pushInterventionToServer(this.intervention);
         });
     } else {
       this.intervention.statut = '4';
@@ -116,7 +136,6 @@ export class InterventionCardComponent {
   }
 
   public ouvrirFormulaire() {
-    //this.etatForm = !this.etatForm;
     let dialogRef = this.dialog.open(DialogueInterventionComponent, {
       panelClass: 'blublu',
       maxWidth: "95vw",

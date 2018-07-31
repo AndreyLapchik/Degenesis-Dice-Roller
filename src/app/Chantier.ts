@@ -18,6 +18,7 @@ export class Chantier {
         public datePoseReel: Date,
         public dateDeposeReel: Date,
         public surveillance: string,
+        public nombd: string
     ) { }
 
 }

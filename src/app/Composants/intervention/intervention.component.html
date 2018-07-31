@@ -3,7 +3,7 @@
     <span class="titre">MES INTERVENTIONS</span>
     <div class="space-filler"></div>
     <span class="search">
-      <input class="search-input" [(ngModel)]="search" placeholder="Recherche" type="search" aria-label="interService.interventions">
+      <input class="search-input" [(ngModel)]="search" placeholder="Nom, ville, code postal..." type="search" aria-label="interService.interventions">
     </span>
   </mat-toolbar-row>
 </mat-toolbar>
@@ -27,6 +27,13 @@
     <div class="contSpin" *ngIf="spinnerVisible">
       <mat-spinner strokeWidth="2.6" diameter="42"></mat-spinner>
     </div>
+    <div style="text-align: center; color: red" *ngIf="interService.nbInterTemp">
+        <a class="docs-navbar-link" mat-button="" (click)="envoiInter()"  aria-disabled="false">
+            {{interService.nbInterTemp}}{{interService.nbInterTemp > 1 ? ' INTERVENTIONS' : ' INTERVENTION'}} EN ATTENTE D'ENVOI
+        </a>
+      
+      <mat-divider></mat-divider>
+    </div>
     <div *ngIf="interService.interventions && interService.interventions.length > 0">
       INTERVENTION EN COURS
       <mat-divider></mat-divider>
@@ -36,8 +43,8 @@
     <app-intervention-card [intervention]="intervention" *ngFor="let intervention of (interService.interventions | interventionFiltre | interventionSearch : search) ">
     </app-intervention-card>
 
-    <div class="noInter" *ngIf="!interService.interventions || interService.interventions.length == 0"> 
-      Vous n'avez aucune intervention à compléter
+    <div class="noInter" *ngIf="!interService.interventions || interService.interventions.length == 0">
+      Vous n'avez aucune intervention à compléter.
     </div>
 
     <div class="interNonValidee" *ngIf="interService.interventions && interService.interventions.length > 0">
@@ -47,12 +54,5 @@
     </div>
     <app-intervention-card #interCard [intervention]="intervention" *ngFor="let intervention of (interService.interventions | interventionFiltre : '3' | interventionSearch : search ) ">
     </app-intervention-card>
-
   </div>
 </div>
-
-
-
-<!-- <div class="contSpin{{!spinnerVisible ? ' invisible' : ''}}">
-    <mat-spinner strokeWidth="2.6" diameter="42"></mat-spinner>
-  </div> -->

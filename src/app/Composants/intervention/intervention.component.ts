@@ -1,9 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { DataService } from '../../Services/data.service';
-import { Utilisateur } from '../../utilisateur';
-import { Intervention } from '../../Intervention';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { InterventionService } from '../../Services/intervention.service';
 
 @Component({
@@ -11,7 +7,7 @@ import { InterventionService } from '../../Services/intervention.service';
   templateUrl: './intervention.component.html',
   styleUrls: ['./intervention.component.css']
 })
-export class InterventionComponent implements OnInit {
+export class InterventionComponent {
   @Input()
   spinnerVisible = false;
   search = "";
@@ -21,10 +17,8 @@ export class InterventionComponent implements OnInit {
     public interService: InterventionService
   ) { }
 
-  ngOnInit() {
-    
+  envoiInter() {
+    this.interService.pushInterventionsCompletes();
   }
-
-
 
 }

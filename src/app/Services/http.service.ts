@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -6,17 +7,14 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class Configuration {
-  public Protocole = 'https://';
-  //public Server = '10.0.26.77';
-  public Server = 'localhost';
-  public Port = '444/';
-  public ApiUrl = 'datasnap/rest/'; //'api/';
-  public dossierUrl = 'TServerMethods1/';
-  public ServerWithApiUrl = this.getServerWithApiUrl;
-  public ForceConfig = true;
-
+  public protocole;
+  public server;
+  public port;
+  public apiUrl; //'api/';
+  public dossierUrl;
+  
   get getServerWithApiUrl(): string {
-    return this.Protocole + this.Server + ':' + this.Port + this.ApiUrl + this.dossierUrl;
+    return this.protocole + this.server + ':' + this.port + this.apiUrl + this.dossierUrl;
   }
 }
 
@@ -27,6 +25,7 @@ export class HttpService {
   private readonly CHANTIER = "getChantier/";
   private readonly INTERVENTION = "getIntervention/";
   private readonly PUSH = "Intervention/1";
+  private readonly PHOTO = "Photo/1";
 
   actionUrl: string;
 
@@ -46,17 +45,10 @@ export class HttpService {
     return this.actionUrl + this.PUSH;
   }
 
-  constructor(
-    private _configuration: Configuration,
-  ) {
-    if (!_configuration.ForceConfig) {
-      const serverHost = window.location.hostname;
-
-      if (serverHost.length > 0) {
-        _configuration.Server = serverHost;
-      }
-    }
-    this.actionUrl = _configuration.getServerWithApiUrl;
+  get PUSH_PHOTO() {
+    return this.actionUrl + this.PHOTO;
   }
+
+
 
 }

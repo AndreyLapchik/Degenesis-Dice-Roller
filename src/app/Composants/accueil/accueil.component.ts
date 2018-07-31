@@ -23,24 +23,26 @@ export class AccueilComponent implements OnInit {
 
   ngOnInit() {
     // Promise destiné à éviter une erreur ExpressionChangedAfterItHasBeenCheckedError
-    setTimeout(() => {
-      if (!this._data.utilisateur.infosOk) {      
-        let dialogRef = this.dialog.open(DialogueUtilisateurComponent, {
-          width: '250px',
-          disableClose: true,
-          closeOnNavigation: false
-        });
+    // setTimeout(() => {
+    //   if (!this._data.utilisateur.infosOk) {      
+    //     let dialogRef = this.dialog.open(DialogueUtilisateurComponent, {
+    //       width: '250px',
+    //       disableClose: true,
+    //       closeOnNavigation: false
+    //     });
     
-        dialogRef.afterClosed().subscribe(result => {
-          this._data.utilisateur.nom = result;
-          this._data.utilisateur.infosOk = true;
-          let sessionUser = {
-            nom: this._data.utilisateur.nom,
-          };
-          localStorage.setItem('sessionUser', JSON.stringify(sessionUser));
-        });
-      }
-    }, 1000);
+    //     dialogRef.afterClosed().subscribe(result => {
+    //       this._data.utilisateur.nom = result;
+    //       this._data.utilisateur.infosOk = true;
+    //       let sessionUser = {
+    //         nom: this._data.utilisateur.nom,
+    //       };
+    //       localStorage.setItem('sessionUser', JSON.stringify(sessionUser));
+    //     });
+    //   } else {
+        this.interService.pushInterventionsCompletes();
+    //   }
+    // }, 1000);
 
 
   }

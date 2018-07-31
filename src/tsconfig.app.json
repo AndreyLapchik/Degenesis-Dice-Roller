@@ -10,7 +10,6 @@
   "exclude": [
     "test.ts",
     "**/*.spec.ts",
-    "../node_modules/agm-direction/**/*.spec.ts",
     "../node_modules/angular2-indexeddb/**/*.spec.ts"
   ]
 }

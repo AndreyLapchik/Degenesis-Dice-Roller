@@ -3,8 +3,9 @@ import { Chantier } from '../Chantier';
 import { DataService } from './data.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpService } from './http.service';
-import { ReplaySubject } from 'rxjs';
+import { ReplaySubject, BehaviorSubject } from 'rxjs';
 import "rxjs/add/observable/of";
+import { Utilisateur } from '../utilisateur';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ import "rxjs/add/observable/of";
 export class ChantierService {
 
   //chantiers: Chantier[] = [];
-  public chantiers: ReplaySubject<Chantier[]> = new ReplaySubject(1);
+  public chantiers: BehaviorSubject<Chantier[]> = new BehaviorSubject(JSON.parse(localStorage.getItem('chantiers')));
 
   constructor(
     private _data: DataService,
@@ -20,23 +21,23 @@ export class ChantierService {
     public httpService: HttpService
   ) { }
 
-
-  public getChantiers() {
+  public getChantiers() {   
     this._data.getAuthenticatedUser().subscribe(user => {
-      if (!user.isAnonymous) {
+      
+      if (user && Utilisateur.rempli(user)) {
+        console.log("Récupération des chantiers sur le serveur");        
         this._http.get<Chantier[]>(this.httpService.GET_CHANTIER + user.code).subscribe(
           (chantiers: Chantier[]) => {
-            if (chantiers && chantiers.length > 0) {
-              console.log("Récupération des chantiers sur le serveur");
-              localStorage.setItem('chantiers', JSON.stringify(chantiers));
+            // On ne met à jour les chantiers que s'il sont différents
+            let chantiersJSON = JSON.stringify(chantiers);
+            if (chantiers && (localStorage.getItem('chantiers') !== chantiersJSON)) {
+              console.log("Chantiers différents : mise à jour");
+              localStorage.setItem('chantiers', chantiersJSON);
               this.chantiers.next(chantiers);
             }
           },
           (err) => {
             console.log("Impossible de joindre le serveur");
-            console.log("Récupération des chantiers en local ");
-            let chantiers: Chantier[] = JSON.parse(localStorage.getItem('chantiers'));
-            this.chantiers.next(chantiers);
           }
         );
       }

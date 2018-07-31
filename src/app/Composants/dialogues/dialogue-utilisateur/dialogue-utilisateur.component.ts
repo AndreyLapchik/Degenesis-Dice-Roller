@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
@@ -15,11 +15,13 @@ export class DialogueUtilisateurComponent {
       if (data && data.nom) {
         this.nom = data.nom;
       }
-      
-     }
+    }
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  submit(): void {
+    if (this.nom && this.nom !== "") {
+      this.dialogRef.close(this.nom);
+    }
+    
   }
 
 }

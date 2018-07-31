@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, AfterViewInit } from '@angular/core';
 
 import { Chantier } from '../../Chantier';
 import { DataService } from '../../Services/data.service';
@@ -9,14 +9,13 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-chantier',
   templateUrl: './chantier.component.html',
-  styleUrls: ['./chantier.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./chantier.component.css', './chantier.component.scss']
 })
 export class ChantierComponent implements OnInit {
   @Input()
   spinnerVisible = false;
   search: string;
-  chantiers: Observable<Chantier[]>;
+  @Input() chantiers: Chantier[];
 
   constructor(
     public _data: DataService,
@@ -24,8 +23,13 @@ export class ChantierComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.chantiers = this.chantierService.chantiers;
-
+    this.spinnerVisible = true;
+    this.chantierService.chantiers.subscribe((chantiers) => {
+      if (chantiers && chantiers.length > 0 ) {        
+        this.chantiers = chantiers;
+        this.spinnerVisible = false;
+      }
+    });
   }
 
   clear() {

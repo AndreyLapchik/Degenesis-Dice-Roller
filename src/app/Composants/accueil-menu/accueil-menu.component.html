@@ -21,7 +21,7 @@
 <nav class="large-header">
 
     <button mat-button type="button">
-        <img height=60px width=60px src="..\assets\icons\DAT Security.png">
+        <img alt="DAT Security" height=60px width=60px src="..\assets\icons\DAT Security.png">
         <span> DAT SECURITY </span>
     </button>
 
@@ -63,7 +63,7 @@
 
 <nav class="small-header">
     <button mat-button type="button">
-        <img height=43px width=43px src="..\assets\icons\DAT Security.png">
+        <img alt="DAT Security" height=43px width=43px src="..\assets\icons\DAT Security.png">
         <span> DAT SECURITY </span>
     </button>
     <div class="flex-spacer"></div>
@@ -80,12 +80,14 @@
         <div class="mat-button-focus-overlay"></div>
     </a>
     <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="/accueil/intervention">
-        <span class="mat-button-wrapper">INTERVENTIONS</span>
+        <span class="mat-button-wrapper" [matBadgeHidden]="!nbInter" [matBadge]="nbInter" matBadgeColor="warn" matBadgeOverlap="true" matBadgeSize="medium" >
+            INTERVENTION
+        </span>
         <div class="mat-button-ripple mat-ripple" matripple=""></div>
         <div class="mat-button-focus-overlay"></div>
     </a>
     <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="/accueil/information">
-        <span class="mat-button-wrapper">INFORMATIONS</span>
+        <span class="mat-button-wrapper">INFORMATION</span>
         <div class="mat-button-ripple mat-ripple" matripple=""></div>
         <div class="mat-button-focus-overlay"></div>
     </a>

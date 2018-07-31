@@ -12,18 +12,9 @@ import { InterventionService } from '../../Services/intervention.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AccueilMenuComponent implements OnInit {
-  public readonly LIENS_ACCUEIL = AppComponent.LIENS_ACCUEIL; //.filter(lien => lien.id != 3 && lien.id != 1 && lien.id != 9);
+  @Input() nbInter: number;
 
-
-
-  @Input() 
-  util: Utilisateur;
-
-  @Output() navToggle = new EventEmitter<boolean>();
-  navOpen() {
-    this.navToggle.emit(true);
-  }
-
+  @Input() util: Utilisateur;
 
   constructor(
     public _data: DataService,
@@ -34,10 +25,6 @@ export class AccueilMenuComponent implements OnInit {
     this._data.getAuthenticatedUser().subscribe(user => {
       this.util = user;
     });
-  }
-
-  openCloseNavbar() {
-    this._data.navbar = !this._data.navbar;
   }
 
 }

@@ -1,5 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
 /* You can add global styles to this file, and also import other style files */
 /* Application-wide Styles */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
@@ -17,27 +16,35 @@ html {
     font-family: -apple-system, BlinkMacSystemFont, Roboto, Noto, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
-.cdk-overlay-pane {
-    max-width: 95vw;
-}
-
 .blublu .mat-dialog-container {
     padding: 12px 12px 24px 12px;
-}
-
-
-
-
-.blublu .cdk-overlay-pane\ my-dialog {
-    max-width: 95vw;
-
 }
 
 .fill-remaining-space {
     /* This fills the remaining space, by using flexbox. 
        Every toolbar row uses a flexbox row layout. */
     flex: 1 1 auto;
-  }
+}
+
+.mat-expansion-panel-header {
+    font-size: 17px;
+}
+
+.mat-simple-snackbar-action {
+    color: yellow;
+}
+
+.mat-expansion-panel-spacing {
+    margin: 0px;
+}
+
+.mat-expansion-panel-header-description {
+    font-size: 15px;
+}
+
+p {
+    font-size: 16px;
+}
 
 /* html, body, mat-sidenav-container {
     width: 100%;

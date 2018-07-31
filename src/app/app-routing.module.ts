@@ -1,23 +1,35 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ConnexionComponent } from './Composants/connexion/connexion.component';
+// import { ConnexionComponent } from './Composants/connexion/connexion.component';
 import { AccueilComponent } from './Composants/accueil/accueil.component';
 import { AuthGuard } from './AuthGuard';
-import { InterventionComponent } from './Composants/intervention/intervention.component';
+// import { InterventionComponent } from './Composants/intervention/intervention.component';
 import { NoAuthGuard } from './NoAuthGuard';
-import { ChantierComponent } from './Composants/chantier/chantier.component';
-import { InformationComponent } from './Composants/information/information.component';
+// import { InformationComponent } from './Composants/information/information.component';
 
 
 const routes: Routes = [
-  { path: 'connexion', component: ConnexionComponent, canActivate: [NoAuthGuard] }, // , 
+  { path: 'connexion', loadChildren: './Composants/connexion/connexion.module#ConnexionModule' , canActivate: [NoAuthGuard] }, // , 
   { path: 'accueil', component: AccueilComponent, canActivate: [AuthGuard],
     children: [
-      { path: 'chantier', component: ChantierComponent },
-      { path: 'intervention', component: InterventionComponent },
-      { path: 'information', component: InformationComponent },
-      { path: '', redirectTo: '/accueil/chantier', pathMatch: 'full' }
+      { 
+        path: 'chantier', 
+        loadChildren: './Composants/chantier/chantier.module#ChantierModule' 
+      },
+      { 
+        path: 'intervention', 
+        loadChildren: './Composants/intervention/intervention.module#InterventionModule' 
+      },
+      { 
+        path: 'information', 
+        loadChildren: './Composants/information/information.module#InformationModule' 
+      },
+      { 
+        path: '', 
+        redirectTo: '/accueil/chantier', 
+        pathMatch: 'full' 
+      }
     ]  
   },
   { path: '', redirectTo: '/accueil/chantier', pathMatch: 'full' }

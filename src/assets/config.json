@@ -1,7 +1,7 @@
 {
     "protocole": "https://",
-    "server2": "127.0.0.1:8080",
-    "server": "interventions.datsecurity.fr",
+    "server": "localhost",
+    "server2": "interventions.datsecurity.fr",
     "port": "444/",
     "apiUrl": "datasnap/rest/",
     "dossierUrl": "TFServerMethods/"

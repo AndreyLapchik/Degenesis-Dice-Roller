@@ -13,37 +13,24 @@ import localeFr from '@angular/common/locales/fr';
 // Service Worker
 import { ServiceWorkerModule } from '@angular/service-worker';
 
-
 // LOCAL
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { ConnexionComponent } from './Composants/connexion/connexion.component';
 import { AccueilComponent } from './Composants/accueil/accueil.component';
-
 import { IndexedDBService } from './Services/indexedDB.service';
 import { DataService } from './Services/data.service';
 //import { CoreModule } from './core/core.module';
 import { AccueilMenuComponent } from './Composants/accueil-menu/accueil-menu.component';
 import { AuthGuard } from './AuthGuard';
-import { InterventionCardComponent } from './Composants/intervention/intervention-card/intervention-card.component';
-import { ChantierCardComponent } from './Composants/chantier/chantier-card/chantier-card.component';
-import { InterventionComponent } from './Composants/intervention/intervention.component';
 import { NoAuthGuard } from './NoAuthGuard';
 
-import { InformationComponent } from './Composants/information/information.component';
-import { ChantierComponent } from './Composants/chantier/chantier.component';
-import { InterventionFiltrePipe } from './Pipe/interventionFiltre.pipe';
-import { ChantierSearchPipe } from './Pipe/chantierSearch.pipe';
-import { InterventionSearchPipe } from './Pipe/interventionSearch.pipe';
 
 import { DialogueUtilisateurComponent } from './Composants/dialogues/dialogue-utilisateur/dialogue-utilisateur.component';
 import { DialogueInterventionComponent } from './Composants/dialogues/dialogue-intervention/dialogue-intervention.component';
 import { DialogueErreurComponent } from './Composants/dialogues/dialogue-erreur/dialogue-erreur.component';
 
 import { InterventionService } from './Services/intervention.service';
-import { DateTimePipe } from './Pipe/dateTime.pipe';
-// import { VirtualScrollModule } from 'angular2-virtual-scroll';
 
 import {
   MatAutocompleteModule,
@@ -97,23 +84,23 @@ import { ChantierService } from './Services/chantier.service';
   ],
   declarations: [
     AppComponent,
-    ConnexionComponent,
+    // ConnexionComponent,
     AccueilComponent,
     AccueilMenuComponent,
-    ChantierComponent,
-    ChantierCardComponent,
-    InterventionComponent,
-    InterventionCardComponent,
-    InformationComponent,
+    // ChantierComponent,
+    // ChantierCardComponent,
+    // InterventionComponent,
+    // InterventionCardComponent,
+    // InformationComponent,
     DialogueUtilisateurComponent,
     DialogueInterventionComponent,
     DialogueErreurComponent,
     DialogueConfirmationComponent,
     DialogueCarteComponent,
-    InterventionFiltrePipe,
-    ChantierSearchPipe,
-    InterventionSearchPipe,
-    DateTimePipe
+    // InterventionFiltrePipe,
+    // ChantierSearchPipe,
+    // InterventionSearchPipe,
+    // DateTimePipe
   ],
   imports: [
     BrowserModule,

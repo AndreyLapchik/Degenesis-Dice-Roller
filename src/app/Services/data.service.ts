@@ -12,7 +12,7 @@ import { Utilisateur } from '../utilisateur';
 
 import { Router } from '@angular/router';
 import { HttpService } from './http.service';
-import { MatDialog } from '../../../node_modules/@angular/material';
+import { MatDialog } from '@angular/material';
 import { DialogueUtilisateurComponent } from '../Composants/dialogues/dialogue-utilisateur/dialogue-utilisateur.component';
 
 class Util {

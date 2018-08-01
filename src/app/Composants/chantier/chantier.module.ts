@@ -42,6 +42,8 @@ import {
     MatStepperModule,
     MatBadgeModule
 } from '@angular/material';
+import { DialogueConfirmationComponent } from "../dialogues/dialogue-confirmation/dialogue-confirmation.component";
+import { DialogueErreurComponent } from "../dialogues/dialogue-erreur/dialogue-erreur.component";
 
 @NgModule({
     imports: [
@@ -85,7 +87,13 @@ import {
     declarations: [
         ChantierComponent,
         ChantierCardComponent,
-        ChantierSearchPipe
+        ChantierSearchPipe,
+        DialogueConfirmationComponent,
+        DialogueErreurComponent
+    ],
+    entryComponents: [
+        DialogueConfirmationComponent,
+        DialogueErreurComponent
     ]
 })
 export class ChantierModule { }

@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { CdkTableModule } from "@angular/cdk/table";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import {
     MatAutocompleteModule,
@@ -44,6 +44,7 @@ import { InterventionSearchPipe } from "../../Pipe/interventionSearch.pipe";
 import { InterventionFiltrePipe } from "../../Pipe/interventionFiltre.pipe";
 import { SignaturePadModule } from "angular2-signaturepad";
 import { DateTimePipe } from "../../Pipe/dateTime.pipe";
+import { DialogueInterventionComponent } from "../dialogues/dialogue-intervention/dialogue-intervention.component";
 
 @NgModule({
     imports: [
@@ -82,6 +83,7 @@ import { DateTimePipe } from "../../Pipe/dateTime.pipe";
         MatTooltipModule,
         MatStepperModule,
         FormsModule,
+        ReactiveFormsModule,
         SignaturePadModule
     ],
     declarations: [
@@ -89,7 +91,11 @@ import { DateTimePipe } from "../../Pipe/dateTime.pipe";
         InterventionCardComponent,
         InterventionSearchPipe,
         InterventionFiltrePipe,
-        DateTimePipe
+        DateTimePipe,
+        DialogueInterventionComponent
+    ],
+    entryComponents: [
+        DialogueInterventionComponent
     ]
 })
 export class InterventionModule { }

@@ -91,23 +91,6 @@ mat-sidenav {
     padding: 0;
 }
 
-/* .container button.boutonFond:hover {
-    color: #283593;
-} */
-
-/* body>.toolBar {position: fixed} */
-
-/* 
-.container > * {
-    width: 100%;
-} */
-
-/*
-#navBar {
-    margin-bottom: 5px; *//*55px;*/
-/*} */
-
-
 .material-icons {
     vertical-align: middle;
 }
@@ -157,46 +140,6 @@ h4 {
     text-decoration: underline;
     color: #101749;
 }
-
-
-.elemTypeMission {
-    color: white;
-}
-.elemTypeMission.merch {
-    color: #EC407A;
-    background-color: #EC407A;
-}
-.elemTypeMission.anima {
-    color: orange;
-    background-color: orange;
-}
-.elemTypeMission.saiso {
-    color: #1E88E5;
-    background-color: #1E88E5;
-}
-.elemTypeMission.perma {
-    color: #4CAF50;
-    background-color: #4CAF50;
-}
-.elemTypeMission.autre {
-    color: rgb(84, 91, 97);
-    background-color: rgb(84, 91, 97);
-}
-.elemTypeMission.texte {
-    background-color: unset;
-}
-.elemTypeMission.pastille {
-    color: white;
-
-    font-family: Monaco, "DejaVu Sans Mono", "Lucida Console", "Andale Mono", monospace;
-
-    border-radius: 50%;
-
-    /* margin-bottom: -8px; */
-    padding: 4px 7px;
-}
-  
-
 
 /*Responsive*/
 

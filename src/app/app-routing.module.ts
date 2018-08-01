@@ -6,7 +6,10 @@ import { AccueilComponent } from './Composants/accueil/accueil.component';
 import { AuthGuard } from './AuthGuard';
 // import { InterventionComponent } from './Composants/intervention/intervention.component';
 import { NoAuthGuard } from './NoAuthGuard';
+<<<<<<< HEAD
 // import { InformationComponent } from './Composants/information/information.component';
+=======
+>>>>>>> 8d26c45... Removed Pre-Caching, Moved Dialogues in Components
 
 
 const routes: Routes = [
@@ -15,11 +18,19 @@ const routes: Routes = [
     children: [
       { 
         path: 'chantier', 
+<<<<<<< HEAD
         loadChildren: './Composants/chantier/chantier.module#ChantierModule' 
       },
       { 
         path: 'intervention', 
         loadChildren: './Composants/intervention/intervention.module#InterventionModule' 
+=======
+        loadChildren: './Composants/chantier/chantier.module#ChantierModule',
+      },
+      { 
+        path: 'intervention', 
+        loadChildren: './Composants/intervention/intervention.module#InterventionModule',
+>>>>>>> 8d26c45... Removed Pre-Caching, Moved Dialogues in Components
       },
       { 
         path: 'information', 

@@ -27,8 +27,8 @@ import { NoAuthGuard } from './NoAuthGuard';
 
 
 import { DialogueUtilisateurComponent } from './Composants/dialogues/dialogue-utilisateur/dialogue-utilisateur.component';
-import { DialogueInterventionComponent } from './Composants/dialogues/dialogue-intervention/dialogue-intervention.component';
-import { DialogueErreurComponent } from './Composants/dialogues/dialogue-erreur/dialogue-erreur.component';
+// import { DialogueInterventionComponent } from './Composants/dialogues/dialogue-intervention/dialogue-intervention.component';
+// import { DialogueErreurComponent } from './Composants/dialogues/dialogue-erreur/dialogue-erreur.component';
 
 import { InterventionService } from './Services/intervention.service';
 
@@ -65,9 +65,9 @@ import {
   MatStepperModule,
   MatBadgeModule
 } from '@angular/material';
-import { DialogueConfirmationComponent } from './Composants/dialogues/dialogue-confirmation/dialogue-confirmation.component';
+// import { DialogueConfirmationComponent } from './Composants/dialogues/dialogue-confirmation/dialogue-confirmation.component';
 
-import { SignaturePadModule } from 'angular2-signaturepad';
+// import { SignaturePadModule } from 'angular2-signaturepad';
 import { HttpService, Configuration } from './Services/http.service';
 import { DialogueCarteComponent } from './Composants/dialogues/dialogue-carte/dialogue-carte.component';
 import { environment } from '../environments/environment';
@@ -76,9 +76,9 @@ import { ChantierService } from './Services/chantier.service';
 @NgModule({
   entryComponents: [
     DialogueUtilisateurComponent,
-    DialogueInterventionComponent,
-    DialogueErreurComponent,
-    DialogueConfirmationComponent,
+    // DialogueInterventionComponent,
+    // DialogueErreurComponent,
+    // DialogueConfirmationComponent,
     DialogueCarteComponent,
     AccueilComponent
   ],
@@ -93,9 +93,9 @@ import { ChantierService } from './Services/chantier.service';
     // InterventionCardComponent,
     // InformationComponent,
     DialogueUtilisateurComponent,
-    DialogueInterventionComponent,
-    DialogueErreurComponent,
-    DialogueConfirmationComponent,
+    // DialogueInterventionComponent,
+    // DialogueErreurComponent,
+    // DialogueConfirmationComponent,
     DialogueCarteComponent,
     // InterventionFiltrePipe,
     // ChantierSearchPipe,
@@ -144,7 +144,7 @@ import { ChantierService } from './Services/chantier.service';
     ReactiveFormsModule,
     HttpModule,
     HttpClientModule,
-    SignaturePadModule,
+    // SignaturePadModule,
     // VirtualScrollModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],

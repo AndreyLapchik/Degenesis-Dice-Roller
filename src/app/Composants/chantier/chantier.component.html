@@ -32,10 +32,10 @@
             </div>
 
             <!-- Virtual scroll uniquement pour les téléphones -->
-            <virtual-scroll #scroll class="mobile" [items]="(chantiers | chantierSearch : search)" [childHeight]="60" [bufferAmount]="3">
+            <!-- <virtual-scroll #scroll class="mobile" [items]="(chantiers | chantierSearch : search)" [childHeight]="60" [bufferAmount]="3">
                 <app-chantier-card [chantier]="chantier" *ngFor="let chantier of scroll.viewPortItems">
                 </app-chantier-card>
-            </virtual-scroll>
+            </virtual-scroll> -->
 
         </mat-accordion>
 

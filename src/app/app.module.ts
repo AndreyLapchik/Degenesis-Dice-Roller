@@ -43,7 +43,7 @@ import { DialogueErreurComponent } from './Composants/dialogues/dialogue-erreur/
 
 import { InterventionService } from './Services/intervention.service';
 import { DateTimePipe } from './Pipe/dateTime.pipe';
-import { VirtualScrollModule } from 'angular2-virtual-scroll';
+// import { VirtualScrollModule } from 'angular2-virtual-scroll';
 
 import {
   MatAutocompleteModule,
@@ -158,7 +158,7 @@ import { ChantierService } from './Services/chantier.service';
     HttpModule,
     HttpClientModule,
     SignaturePadModule,
-    VirtualScrollModule,
+    // VirtualScrollModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [

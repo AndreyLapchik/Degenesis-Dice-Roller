@@ -18,10 +18,12 @@ import { DialogueCarteComponent } from '../../dialogues/dialogue-carte/dialogue-
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class ChantierCardComponent {
+export class ChantierCardComponent implements OnInit {
 
     @Input() chantier: Chantier;
     @Input() lien = '';
+
+    actualWidth: number;
 
     constructor(private route: Router,
         public data: DataService,
@@ -29,7 +31,17 @@ export class ChantierCardComponent {
         public interService: InterventionService,
         public dialog: MatDialog,
         public sanitizer: DomSanitizer
-    ) { }
+    ) {
+        // Actual space available in navigator
+        this.actualWidth = window.innerWidth;
+    }
+
+    ngOnInit() {
+    }
+
+    onResize(event) {
+        this.actualWidth = event.target.innerWidth;        
+    }
 
     getMapSrc() {
         this.maps.getTrajet(this.chantier).subscribe(adresse => {
@@ -55,14 +67,14 @@ export class ChantierCardComponent {
                 //width: '250px',
                 data: { texte: 'Vous avez déjà une intervention en cours.' }
             });
-        } else {            
+        } else {
             let dialogRef = this.dialog.open(DialogueConfirmationComponent, {
-                data: { texte: "Veuillez entrer la date d'appel pour démarrer l'intervention.", date: new Date()}
+                data: { texte: "Veuillez entrer la date d'appel pour démarrer l'intervention.", date: new Date() }
             });
             dialogRef.afterClosed().subscribe(result => {
                 if (result && result.dateAppel) {
                     //Créé une nouvelle intervention d'un chantier 
-                    console.log(result.dateAppel);                   
+                    console.log(result.dateAppel);
                     this.interService.insertIntervention(this.chantier, result.dateAppel, result.typeinter);
                     this.route.navigate(['accueil/intervention']);
                 }

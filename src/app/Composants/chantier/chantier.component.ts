@@ -17,7 +17,7 @@ export class ChantierComponent implements OnInit {
   search: string;
   @Input() chantiers: Chantier[];
 
-  constructor(
+constructor(
     public _data: DataService,
     public chantierService: ChantierService
   ) { }
@@ -25,7 +25,7 @@ export class ChantierComponent implements OnInit {
   ngOnInit() {
     this.spinnerVisible = true;
     this.chantierService.chantiers.subscribe((chantiers) => {
-      if (chantiers && chantiers.length > 0 ) {        
+      if (chantiers && chantiers.length > 0 ) {
         this.chantiers = chantiers;
         this.spinnerVisible = false;
       }

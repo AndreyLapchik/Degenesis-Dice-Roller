@@ -8,7 +8,6 @@ import { CdkTableModule } from "@angular/cdk/table";
 import { FormsModule } from "@angular/forms";
 import { ChantierSearchPipe } from "../../Pipe/chantierSearch.pipe";
 import { ChantierCardComponent } from "./chantier-card/chantier-card.component";
-import { VirtualScrollModule } from "angular2-virtual-scroll";
 
 import {
     MatAutocompleteModule,
@@ -81,8 +80,7 @@ import {
         MatToolbarModule,
         MatTooltipModule,
         MatStepperModule,
-        FormsModule,
-        VirtualScrollModule
+        FormsModule
     ],
     declarations: [
         ChantierComponent,

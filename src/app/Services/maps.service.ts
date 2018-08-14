@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material';
 
 const GEOLOCATION_ERRORS = {
-  'errors.location.unsupportedBrowser': 'Browser does not support location services',
-  'errors.location.permissionDenied': 'You have rejected access to your location',
-  'errors.location.positionUnavailable': 'Unable to determine your location',
-  'errors.location.timeout': 'Service timeout has been reached'
+  'errors.location.unsupportedBrowser': 'Les services GPS ne sont pas supportés par votre navigateur.',
+  'errors.location.permissionDenied': "Vous avez refusé l'accès à vos coordonnées GPS.",
+  'errors.location.positionUnavailable': 'Impossible de déterminer votre position.',
+  'errors.location.timeout': "Vos coordonnées GPS n'ont pu être récupérées dans le temps imparti."
 };
 
 @Injectable({
@@ -23,7 +24,9 @@ export class MapsService {
 
   private readonly FULLSCREEN = " allowfullscreen";
 
-  constructor() { }
+  constructor(
+    public snackBar: MatSnackBar
+  ) { }
 
   get Key(): string {
     return this.KEY;
@@ -41,43 +44,57 @@ export class MapsService {
           (error) => {
             switch (error.code) {
               case 1:
-                console.log(GEOLOCATION_ERRORS['errors.location.permissionDenied']);
+                this.snackBar.open(GEOLOCATION_ERRORS['errors.location.permissionDenied'], "", {
+                  duration: 2000,
+                });
+                observer.error(1);
                 break;
               case 2:
-                console.log(GEOLOCATION_ERRORS['errors.location.positionUnavailable']);
+                this.snackBar.open(GEOLOCATION_ERRORS['errors.location.positionUnavailable'], "", {
+                  duration: 2000,
+                });
+                observer.error(2);
                 break;
               case 3:
-                console.log(GEOLOCATION_ERRORS['errors.location.timeout']);
+                this.snackBar.open(GEOLOCATION_ERRORS['errors.location.timeout'], "", {
+                  duration: 2000,
+                });
+                observer.error(3);
                 break;
             }
           },
           opts);
       } else {
-        console.log(GEOLOCATION_ERRORS['errors.location.unsupportedBrowser']);
+        this.snackBar.open(GEOLOCATION_ERRORS['errors.location.unsupportedBrowser'], "", {
+          duration: 2000,
+        });
+        observer.error(4);
       }
     });
   }
 
   getTrajet(lieu: any): Observable<string> {
     //[lieu.adr1, lieu.adr2, lieu.adr3,  lieu.cp,  lieu.ville, lieu.pays].join(' ');
-    let adresse: string =  
-      ((lieu.adr1) ? lieu.adr1 : "" ) + 
-      ((lieu.adr2) ? "+" + lieu.adr2 : "" ) + 
-      ((lieu.adr3) ? "+" + lieu.adr3 : "" ) + 
-      ((lieu.cp) ? ",+" + lieu.cp : "" ) + 
-      ((lieu.ville) ? "+" + lieu.ville : "" ) + 
-      ((lieu.pays) ? ",+" + lieu.pays : "") ;
+    let adresse: string =
+      ((lieu.adr1) ? lieu.adr1 : "") +
+      ((lieu.adr2) ? "+" + lieu.adr2 : "") +
+      ((lieu.adr3) ? "+" + lieu.adr3 : "") +
+      ((lieu.cp) ? ",+" + lieu.cp : "") +
+      ((lieu.ville) ? "+" + lieu.ville : "") +
+      ((lieu.pays) ? ",+" + lieu.pays : "");
     adresse = adresse.replace(/ /g, "+");
     //console.log(adresse);
     return Observable.create(observer => {
-      this.getLocation({ enableHighAccuracy: false, maximumAge: 60000, timeout: 27000 })
-      .subscribe(position => {
-        if (position && position != '') {
-          let coord = position.coords.latitude + "," +  position.coords.longitude; 
-          observer.next(this.ROOT + this.ORIGIN + coord + this.DESTINATION + adresse + this.KEY);
-          observer.complete();
-        }
-      });
+      this.getLocation({ enableHighAccuracy: true, maximumAge: 0, timeout: 10000 })
+        .subscribe(position => {
+          if (position && position != '') {
+            let coord = position.coords.latitude + "," + position.coords.longitude;
+            observer.next(this.ROOT + this.ORIGIN + coord + this.DESTINATION + adresse + this.KEY);
+            observer.complete();
+          }
+        }, error => {
+          console.log("code erreur GPS :" + error.toString());
+        });
     });
   }
 }

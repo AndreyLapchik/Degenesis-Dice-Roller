@@ -13,9 +13,9 @@ import { DialogueCarteComponent } from '../../dialogues/dialogue-carte/dialogue-
   styleUrls: ['./intervention-card.component.css']
 })
 export class InterventionCardComponent {
-  @Input()
-  intervention: Intervention;
-  etatForm: boolean = false;
+
+  @Input() intervention: Intervention;
+  chargement: boolean = false;
   lienAPI: string;
 
   motifs = [
@@ -65,22 +65,21 @@ export class InterventionCardComponent {
 
   // L'utilisateur arrive sur le lieu de l'intervention
   public arrive() {
-    this._maps.getLocation({ enableHighAccuracy: false, maximumAge: 60000, timeout: 3000 })
+    this.chargement = true;
+    this._maps.getLocation({ enableHighAccuracy: true, maximumAge: 0, timeout: 10000 })
       .subscribe(position => {
+        this.chargement = false;
         if (position && position != '') {
           this.intervention.datearrive = new Date().toISOString();
-          console.log(this.intervention.datearrive);
           this.intervention.latdebpoint = position.coords.latitude;
           this.intervention.longdebpoint = position.coords.longitude;
           this.intervention.statut = '2';
           this.interService.pushInterventionToServer(this.intervention);
-        } else {
-          this.intervention.datearrive = new Date().toISOString();
-          this.intervention.statut = '2';
-          this.interService.pushInterventionToServer(this.intervention);
         }
       }, err => {
+        this.chargement = false;
         this.intervention.datearrive = new Date().toISOString();
+        this.intervention.geoerreur = err.toString(); // Code d'erreur renvoyé par le service GPS
         this.intervention.statut = '2';
         this.interService.pushInterventionToServer(this.intervention);
       });
@@ -88,21 +87,21 @@ export class InterventionCardComponent {
 
   // L'utilisateur part du lieu de l'intervention
   public depart() {
-    this._maps.getLocation({ enableHighAccuracy: false, maximumAge: 60000, timeout: 3000 })
+    this.chargement = true;
+    this._maps.getLocation({ enableHighAccuracy: true, maximumAge: 0, timeout: 10000 })
       .subscribe(position => {
+        this.chargement = false;
         if (position && position != '') {
           this.intervention.datedepart = new Date().toISOString();
           this.intervention.latfinpoint = position.coords.latitude;
           this.intervention.longfinpoint = position.coords.longitude;
           this.intervention.statut = '3';
           this.interService.pushInterventionToServer(this.intervention);
-        } else {
-          this.intervention.datedepart = new Date().toISOString();
-          this.intervention.statut = '3';
-          this.interService.pushInterventionToServer(this.intervention);
         }
       }, err => {
+        this.chargement = false;
         this.intervention.datedepart = new Date().toISOString();
+        this.intervention.geoerreur = err.toString(); // Code d'erreur renvoyé par le service GPS
         this.intervention.statut = '3';
         this.interService.pushInterventionToServer(this.intervention);
       });
@@ -110,22 +109,22 @@ export class InterventionCardComponent {
 
   // L'utilisateur a remplit le formulaire en entier et l'envoie
   public Submit() {
+    this.chargement = true;
     if (this.intervention.statut === '2') {
-      this._maps.getLocation({ enableHighAccuracy: false, maximumAge: 60000, timeout: 3000 })
+      this._maps.getLocation({ enableHighAccuracy: true, maximumAge: 0, timeout: 10000 })
         .subscribe(position => {
+          this.chargement = false;
           if (position && position != '') {
             this.intervention.datedepart = new Date().toISOString();
             this.intervention.latfinpoint = position.coords.latitude;
             this.intervention.longfinpoint = position.coords.longitude;
             this.intervention.statut = '4';
             this.interService.pushInterventionToServer(this.intervention);
-          } else {
-            this.intervention.datedepart = new Date().toISOString();
-            this.intervention.statut = '4';
-            this.interService.pushInterventionToServer(this.intervention);
           }
         }, err => {
+          this.chargement = false;
           this.intervention.datedepart = new Date().toISOString();
+          this.intervention.geoerreur = err.toString(); // Code d'erreur renvoyé par le service GPS
           this.intervention.statut = '4';
           this.interService.pushInterventionToServer(this.intervention);
         });

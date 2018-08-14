@@ -57,12 +57,22 @@
     </mat-accordion>
 
 
+
+
     <div class="actions" [ngSwitch]="true">
         <div class="action">
-            <button class="button" mat-raised-button (click)="arrive()" *ngSwitchCase="intervention.statut == '1'">Début de l'intervention</button>
-            <button class="button" mat-raised-button (click)="depart()" *ngSwitchCase="intervention.statut == '2'">Fin de l'intervention</button>
+            <button class="button" mat-raised-button (click)="arrive()" *ngSwitchCase="intervention.statut == '1'">
+                <mat-spinner *ngIf="chargement" class="spinnerAtt" strokeWidth="2.6" diameter="26"></mat-spinner>
+                <span *ngIf="!chargement">Début de l'intervention</span>
+            </button>
+            <button class="button" mat-raised-button (click)="depart()" *ngSwitchCase="intervention.statut == '2'">
+                <mat-spinner *ngIf="chargement" class="spinnerAtt" strokeWidth="2.6" diameter="26"></mat-spinner>
+                <span *ngIf="!chargement">Fin de l'intervention</span>
+            </button>
             <button class="button" mat-raised-button (click)="ouvrirFormulaire()" *ngSwitchCase="intervention.statut == '2' || intervention.statut == '3'">
-                Ouvrir le formulaire </button>
+                <mat-spinner *ngIf="chargement" class="spinnerAtt" strokeWidth="2.6" diameter="26"></mat-spinner>
+                <span *ngIf="!chargement">Ouvrir le formulaire </span>
+            </button>
         </div>
     </div>
 </div>

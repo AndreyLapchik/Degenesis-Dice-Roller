@@ -13,10 +13,16 @@ export class ChantierSearchPipe implements PipeTransform {
     if (!mot) {
       return chantiers;
     }
+    
     return chantiers.filter(chantier => 
-      (chantier.nom.toLowerCase().includes(mot.toLowerCase())  || 
-      chantier.ville.toLowerCase().includes(mot.toLowerCase()) || 
-      chantier.cp.toLowerCase().includes(mot.toLowerCase()) ));
+      (this.myLowerCase(chantier.nom).includes(mot.toLowerCase())  || 
+      this.myLowerCase(chantier.ville).includes(mot.toLowerCase()) || 
+      this.myLowerCase(chantier.cp).includes(mot.toLowerCase()) ));
+  }
+
+  // Returns "" if mot is empty else LowerCase
+  myLowerCase(mot: string): string {
+    return mot ? mot.toLowerCase() : "";
   }
 
 }

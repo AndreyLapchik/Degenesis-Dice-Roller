@@ -14,8 +14,13 @@ export class InterventionSearchPipe implements PipeTransform {
       return interventions;
     }
     return interventions.filter(intervention => 
-      (intervention.nom.toLowerCase().includes(mot.toLowerCase())  || 
-      intervention.ville.toLowerCase().includes(mot.toLowerCase()) || 
-      intervention.cp.toLowerCase().includes(mot.toLowerCase()) ));
+      (this.myLowerCase(intervention.nom).includes(mot.toLowerCase())  || 
+      this.myLowerCase(intervention.ville).includes(mot.toLowerCase()) || 
+      this.myLowerCase(intervention.cp).includes(mot.toLowerCase()) ));
+  }
+
+  // Returns "" if mot is empty else LowerCase
+  myLowerCase(mot: string): string {
+    return mot ? mot.toLowerCase() : "";
   }
 }

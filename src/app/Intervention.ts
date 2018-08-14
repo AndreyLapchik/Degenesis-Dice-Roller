@@ -45,6 +45,7 @@ export class Intervention {
     // photos: string[];
 
     nombd: string;
+    geoerreur?: string;
 
 
 

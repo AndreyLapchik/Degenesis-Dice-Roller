@@ -90,6 +90,8 @@ mat-expansion-panel {
     text-decoration: inherit;
     flex: 1;
     margin-top: 5px;
+    display: flex;
+    justify-content: center;
 }
 
 /*Responsive*/

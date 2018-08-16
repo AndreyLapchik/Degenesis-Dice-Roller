@@ -45,19 +45,19 @@ export class MapsService {
             switch (error.code) {
               case 1:
                 this.snackBar.open(GEOLOCATION_ERRORS['errors.location.permissionDenied'], "", {
-                  duration: 2000,
+                  duration: 3000,
                 });
                 observer.error(1);
                 break;
               case 2:
                 this.snackBar.open(GEOLOCATION_ERRORS['errors.location.positionUnavailable'], "", {
-                  duration: 2000,
+                  duration: 3000,
                 });
                 observer.error(2);
                 break;
               case 3:
                 this.snackBar.open(GEOLOCATION_ERRORS['errors.location.timeout'], "", {
-                  duration: 2000,
+                  duration: 3000,
                 });
                 observer.error(3);
                 break;
@@ -66,7 +66,7 @@ export class MapsService {
           opts);
       } else {
         this.snackBar.open(GEOLOCATION_ERRORS['errors.location.unsupportedBrowser'], "", {
-          duration: 2000,
+          duration: 3000,
         });
         observer.error(4);
       }

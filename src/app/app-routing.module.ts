@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-// import { ConnexionComponent } from './Composants/connexion/connexion.component';
 import { AccueilComponent } from './Composants/accueil/accueil.component';
 import { AuthGuard } from './AuthGuard';
-// import { InterventionComponent } from './Composants/intervention/intervention.component';
 import { NoAuthGuard } from './NoAuthGuard';
 
 

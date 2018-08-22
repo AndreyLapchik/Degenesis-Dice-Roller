@@ -148,7 +148,7 @@ export class DialogueInterventionComponent implements AfterViewInit {
         let reader = new FileReader();
         reader.readAsDataURL(blob);
         reader.onloadend = () => {
-          this.indexedDB.addPhoto(reader.result.toString(), this.intervention).then(() => {
+          this.indexedDB.addPhoto(reader.result as string, this.intervention).then(() => {
             this.traitementEnCours = false;
           });
         };

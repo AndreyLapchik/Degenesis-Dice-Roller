@@ -1,9 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { AppComponent } from '../../app.component';
-import { DataService } from '../../Services/data.service';
-import { Utilisateur } from '../../utilisateur';
-import { InterventionService } from '../../Services/intervention.service';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
+import { DataService } from '../../../Services/data.service';
+import { InterventionService } from '../../../Services/intervention.service';
+import { Utilisateur } from '../../../utilisateur';
 
 @Component({
   selector: 'app-accueil-menu',
@@ -11,20 +10,21 @@ import { InterventionService } from '../../Services/intervention.service';
   styleUrls: ['./accueil-menu.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 export class AccueilMenuComponent implements OnInit {
+
   @Input() nbInter: number;
 
-  @Input() util: Utilisateur;
+  util: Utilisateur;
 
   constructor(
     public _data: DataService,
     public interService: InterventionService
-    ) { }
+  ) { }
 
   ngOnInit() {
     this._data.getAuthenticatedUser().subscribe(user => {
       this.util = user;
     });
   }
-
 }

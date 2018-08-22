@@ -1,8 +1,8 @@
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
 
-import { InformationRoutes } from "./information.routing";
-import { InformationComponent } from "./information.component";
-import { SharedModule } from "../../shared.module";
+import { SharedModule } from '../../shared.module';
+import { InformationComponent } from './information.component';
+import { InformationRoutes } from './information.routing';
 
 @NgModule({
     imports: [

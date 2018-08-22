@@ -1,12 +1,12 @@
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
 
-import { ChantierRoutes } from "./chantier.routing";
-import { ChantierComponent } from "./chantier.component";
-import { ChantierSearchPipe } from "../../Pipe/chantierSearch.pipe";
-import { ChantierCardComponent } from "./chantier-card/chantier-card.component";
-import { DialogueConfirmationComponent } from "../dialogues/dialogue-confirmation/dialogue-confirmation.component";
-import { DialogueErreurComponent } from "../dialogues/dialogue-erreur/dialogue-erreur.component";
-import { SharedModule } from "../../shared.module";
+import { ChantierSearchPipe } from '../../Pipe/chantierSearch.pipe';
+import { SharedModule } from '../../shared.module';
+import { DialogueConfirmationComponent } from '../dialogues/dialogue-confirmation/dialogue-confirmation.component';
+import { DialogueErreurComponent } from '../dialogues/dialogue-erreur/dialogue-erreur.component';
+import { ChantierCardComponent } from './chantier-card/chantier-card.component';
+import { ChantierComponent } from './chantier.component';
+import { ChantierRoutes } from './chantier.routing';
 
 @NgModule({
     imports: [

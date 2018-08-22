@@ -1,31 +1,28 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import localeFr from '@angular/common/locales/fr';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
-// LOCAL
-import { AppComponent } from './app.component';
-import { AccueilComponent } from './Composants/accueil/accueil.component';
-import { AccueilMenuComponent } from './Composants/accueil-menu/accueil-menu.component';
-import { DialogueUtilisateurComponent } from './Composants/dialogues/dialogue-utilisateur/dialogue-utilisateur.component';
-import { DialogueCarteComponent } from './Composants/dialogues/dialogue-carte/dialogue-carte.component';
-
+import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { AuthGuard } from './AuthGuard';
+import { AccueilMenuComponent } from './Composants/accueil/accueil-menu/accueil-menu.component';
+import { AccueilComponent } from './Composants/accueil/accueil.component';
+import { DialogueCarteComponent } from './Composants/dialogues/dialogue-carte/dialogue-carte.component';
+import { DialogueUtilisateurComponent } from './Composants/dialogues/dialogue-utilisateur/dialogue-utilisateur.component';
+import { NoAuthGuard } from './NoAuthGuard';
+import { ChantierService } from './Services/chantier.service';
+import { DataService } from './Services/data.service';
+import { Configuration, HttpService } from './Services/http.service';
+import { IndexedDBService } from './Services/indexedDB.service';
+import { InterventionService } from './Services/intervention.service';
 import { SharedModule } from './shared.module';
 
-import { IndexedDBService } from './Services/indexedDB.service';
-import { DataService } from './Services/data.service';
-import { InterventionService } from './Services/intervention.service';
-import { HttpService, Configuration } from './Services/http.service';
-import { ChantierService } from './Services/chantier.service';
-
-import { AuthGuard } from './AuthGuard';
-import { NoAuthGuard } from './NoAuthGuard';
-import { environment } from '../environments/environment';
-
+// LOCAL
 @NgModule({
   entryComponents: [
     DialogueUtilisateurComponent,

@@ -1,14 +1,10 @@
-// ANGULAR
-import { Component, Input } from '@angular/core';
-//import { Location } from '@angular/common';
-import { Router } from '@angular/router';
-
-// LOCAL
-import { IndexedDBService } from '../../Services/indexedDB.service';
-import { DataService } from '../../Services/data.service';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+
+import { DataService } from '../../Services/data.service';
 
 @Component({
   selector: 'app-connexion',
@@ -23,10 +19,7 @@ export class ConnexionComponent {
   spinnerVisible = false;
   mdpVisible = false;
 
-
-
   constructor(
-    protected bddIndexedDbService: IndexedDBService,
     private _data: DataService,
     private _router: Router,
     public sanitizer: DomSanitizer,

@@ -1,9 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material';
+
 import { DataService } from '../../Services/data.service';
 import { DialogueUtilisateurComponent } from '../dialogues/dialogue-utilisateur/dialogue-utilisateur.component';
-import { MatDialog } from '@angular/material';
-import { Utilisateur } from '../../utilisateur';
 
 @Component({
   selector: 'app-information',
@@ -12,13 +12,6 @@ import { Utilisateur } from '../../utilisateur';
 })
 export class InformationComponent implements OnInit {
 
-  @Input()
-
-  nom: string;
-  prenom: string;
-  done = false;
-
-  isLinear = false;
   formGroup: FormGroup;
 
   constructor(
@@ -32,10 +25,6 @@ export class InformationComponent implements OnInit {
     this.formGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
-  }
-
-  public enregistrer() {
-
   }
 
   public reinitialiser() {

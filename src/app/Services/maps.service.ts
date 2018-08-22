@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
+import { Observable } from 'rxjs';
 
 const GEOLOCATION_ERRORS = {
   'errors.location.unsupportedBrowser': 'Les services GPS ne sont pas supportés par votre navigateur.',
@@ -74,7 +74,6 @@ export class MapsService {
   }
 
   getTrajet(lieu: any): Observable<string> {
-    //[lieu.adr1, lieu.adr2, lieu.adr3,  lieu.cp,  lieu.ville, lieu.pays].join(' ');
     let adresse: string =
       ((lieu.adr1) ? lieu.adr1 : "") +
       ((lieu.adr2) ? "+" + lieu.adr2 : "") +
@@ -83,7 +82,6 @@ export class MapsService {
       ((lieu.ville) ? "+" + lieu.ville : "") +
       ((lieu.pays) ? ",+" + lieu.pays : "");
     adresse = adresse.replace(/ /g, "+");
-    //console.log(adresse);
     return Observable.create(observer => {
       this.getLocation({ enableHighAccuracy: true, maximumAge: 0, timeout: 10000 })
         .subscribe(position => {

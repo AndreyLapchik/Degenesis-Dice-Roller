@@ -6,9 +6,8 @@
       <input  matInput placeholder="Prénom Nom" cdkFocusInitial required name="input" [(ngModel)]="nom">
     </mat-form-field>
   </form>
-
-
 </div>
+
 <div mat-dialog-actions>
   <button type="submit" mat-button [disabled]='!nom' [mat-dialog-close]="nom">Ok</button>
 </div>

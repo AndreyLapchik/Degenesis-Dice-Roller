@@ -1,4 +1,4 @@
-import { Point } from "angular2-signaturepad/signature-pad";
+import { Point } from 'angular2-signaturepad/signature-pad';
 
 export class Intervention {
     id: number;

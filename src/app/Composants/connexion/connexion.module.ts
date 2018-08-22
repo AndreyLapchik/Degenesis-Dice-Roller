@@ -1,8 +1,8 @@
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
 
-import { ConnexionRoutes } from "./connexion.routing";
-import { ConnexionComponent } from "./connexion.component";
-import { SharedModule } from "../../shared.module";
+import { SharedModule } from '../../shared.module';
+import { ConnexionComponent } from './connexion.component';
+import { ConnexionRoutes } from './connexion.routing';
 
 @NgModule({
     imports: [

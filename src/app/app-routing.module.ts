@@ -7,29 +7,29 @@ import { NoAuthGuard } from './NoAuthGuard';
 
 
 const routes: Routes = [
-  { path: 'connexion', loadChildren: './Composants/connexion/connexion.module#ConnexionModule' , canActivate: [NoAuthGuard] }, // , 
+  { path: '', redirectTo: '/accueil/chantier', pathMatch: 'full' },
+  { path: 'connexion', loadChildren: './Composants/connexion/connexion.module#ConnexionModule' , canActivate: [NoAuthGuard] }, // ,
   { path: 'accueil', component: AccueilComponent, canActivate: [AuthGuard],
     children: [
-      { 
-        path: 'chantier', 
-        loadChildren: './Composants/chantier/chantier.module#ChantierModule' 
+      {
+        path: 'chantier',
+        loadChildren: './Composants/chantier/chantier.module#ChantierModule'
       },
-      { 
-        path: 'intervention', 
-        loadChildren: './Composants/intervention/intervention.module#InterventionModule' 
+      {
+        path: 'intervention',
+        loadChildren: './Composants/intervention/intervention.module#InterventionModule'
       },
-      { 
-        path: 'information', 
-        loadChildren: './Composants/information/information.module#InformationModule' 
+      {
+        path: 'information',
+        loadChildren: './Composants/information/information.module#InformationModule'
       },
-      { 
-        path: '', 
-        redirectTo: '/accueil/chantier', 
-        pathMatch: 'full' 
+      {
+        path: '',
+        redirectTo: '/accueil/chantier',
+        pathMatch: 'full'
       }
-    ]  
-  },
-  { path: '', redirectTo: '/accueil/chantier', pathMatch: 'full' }
+    ]
+  }
 ];
 
 @NgModule({

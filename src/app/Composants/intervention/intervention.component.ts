@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
 import { DataService } from '../../Services/data.service';
 import { InterventionService } from '../../Services/intervention.service';
 

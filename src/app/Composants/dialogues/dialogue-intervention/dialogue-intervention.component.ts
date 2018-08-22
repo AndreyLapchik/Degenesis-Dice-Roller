@@ -1,17 +1,17 @@
-import { Component, OnInit, Inject, ViewChildren, QueryList, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Intervention } from '../../../Intervention';
-import { FormGroup, FormBuilder, Validators, FormControl, FormArray, ValidatorFn } from '@angular/forms';
-import { SignaturePad } from 'angular2-signaturepad/signature-pad';
-import { IndexedDBService } from '../../../Services/indexedDB.service';
+import { AfterViewInit, Component, ElementRef, Inject, QueryList, ViewChildren } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
+import { SignaturePad } from 'angular2-signaturepad/signature-pad';
+
+import { Intervention } from '../../../Intervention';
+import { IndexedDBService } from '../../../Services/indexedDB.service';
 
 @Component({
   selector: 'app-dialogue-intervention',
   templateUrl: './dialogue-intervention.component.html',
   styleUrls: ['./dialogue-intervention.component.css']
 })
-
 
 export class DialogueInterventionComponent implements AfterViewInit {
 
@@ -53,7 +53,6 @@ export class DialogueInterventionComponent implements AfterViewInit {
 
   form: FormGroup;
 
-  spinnerVisible: Boolean = false;
   traitementEnCours: Boolean = false;
 
   constructor(
@@ -125,7 +124,6 @@ export class DialogueInterventionComponent implements AfterViewInit {
     this.signatures.first.set('canvasWidth', 200);
     this.signatures.first.set('canvasHeight', 200);
 
-
     this.signatures.last.set('canvasWidth', 200);
     this.signatures.last.set('canvasHeight', 200);
 
@@ -143,7 +141,6 @@ export class DialogueInterventionComponent implements AfterViewInit {
   //////////////////////// PHOTOS ///////////////////////////////
 
   changeListener(event): void {
-    this.spinnerVisible = true;
     this.traitementEnCours = true;
     let file = event.target.files[0];
     if (file && file.type.includes("image")) {
@@ -151,7 +148,7 @@ export class DialogueInterventionComponent implements AfterViewInit {
         let reader = new FileReader();
         reader.readAsDataURL(blob);
         reader.onloadend = () => {
-          this.indexedDB.addPhoto(reader.result, this.intervention).then(() => {
+          this.indexedDB.addPhoto(reader.result.toString(), this.intervention).then(() => {
             this.traitementEnCours = false;
           });
         };
@@ -197,7 +194,7 @@ export class DialogueInterventionComponent implements AfterViewInit {
       image.onerror = reject;
     });
   }
-  
+
   //////////////////////// SIGNATURE ///////////////////////////////
 
   drawCompleteInterv() {

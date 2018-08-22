@@ -1,10 +1,8 @@
-import { Injectable } from "@angular/core";
-import { CanActivate, Router } from "@angular/router";
-// tslint:disable-next-line:import-blacklist
-import { Observable } from "rxjs";
-import { DataService } from "./Services/data.service";
-import { AppComponent } from "./app.component";
-import { Utilisateur } from "./utilisateur";
+import { Injectable } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+
+import { DataService } from './Services/data.service';
 
 @Injectable()
 export class NoAuthGuard implements CanActivate {

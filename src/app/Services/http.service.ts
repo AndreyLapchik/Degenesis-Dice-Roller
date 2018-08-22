@@ -1,5 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,7 @@ export class Configuration {
   public port;
   public apiUrl; //'api/';
   public dossierUrl;
-  
+
   get getServerWithApiUrl(): string {
     return this.protocole + this.server + ':' + this.port + this.apiUrl + this.dossierUrl;
   }

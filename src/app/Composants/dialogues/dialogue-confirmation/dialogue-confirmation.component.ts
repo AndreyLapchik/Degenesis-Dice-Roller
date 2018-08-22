@@ -1,6 +1,5 @@
-import { Component, Inject, AfterViewInit, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { FormControl } from '@angular/forms';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-dialogue-confirmation',
@@ -17,17 +16,15 @@ export class DialogueConfirmationComponent {
   ];
 
   typeinter: string;
+  date: Date;
 
   constructor(
     public dialogRef: MatDialogRef<DialogueConfirmationComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-      this.date = data.date;
-     }
+    this.date = data.date;
+  }
 
-   date: Date;
-
-
-  submitDate() {    
-    this.dialogRef.close({dateAppel: this.date, typeinter: this.typeinter});
+  submitDate() {
+    this.dialogRef.close({ dateAppel: this.date, typeinter: this.typeinter });
   }
 }

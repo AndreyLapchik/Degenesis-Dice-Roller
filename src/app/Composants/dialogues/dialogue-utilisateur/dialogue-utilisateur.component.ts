@@ -1,5 +1,5 @@
-import { Component, OnInit, Inject, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-dialogue-utilisateur',
@@ -9,6 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class DialogueUtilisateurComponent {
 
   nom: string;
+
   constructor(
     public dialogRef: MatDialogRef<DialogueUtilisateurComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
@@ -21,7 +22,5 @@ export class DialogueUtilisateurComponent {
     if (this.nom && this.nom !== "") {
       this.dialogRef.close(this.nom);
     }
-    
   }
-
 }

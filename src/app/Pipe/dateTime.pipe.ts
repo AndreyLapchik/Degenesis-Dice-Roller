@@ -1,5 +1,5 @@
-import { Pipe, PipeTransform } from '@angular/core';
 import { formatDate } from '@angular/common';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'dateTime'
@@ -9,7 +9,7 @@ export class DateTimePipe implements PipeTransform {
   transform(input: string) {
     if (!input) {
       return "";
-    } 
+    }
     try {
       input = formatDate(input, "dd/MM/yyyy HH:mm:ss", "fr");
     } finally {
@@ -18,11 +18,11 @@ export class DateTimePipe implements PipeTransform {
       if (datetime[1]) {
         return new Date(date[2] + "-" + date[1] + "-" + date[0] + "T" + datetime[1]);
       } else {
-        return new Date(date[2] + "-" + date[1] + "-" + date[0] + "T" + "00:00:00");  
+        return new Date(date[2] + "-" + date[1] + "-" + date[0] + "T" + "00:00:00");
       }
-      
+
     }
-    
+
 
 
   }

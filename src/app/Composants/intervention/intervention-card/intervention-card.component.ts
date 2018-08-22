@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { Intervention } from '../../../Intervention';
-import { MapsService } from '../../../Services/maps.service';
-import { DialogueInterventionComponent } from '../../dialogues/dialogue-intervention/dialogue-intervention.component';
 import { MatDialog } from '@angular/material';
-import { InterventionService } from '../../../Services/intervention.service';
 import { DomSanitizer } from '@angular/platform-browser';
+
+import { Intervention } from '../../../Intervention';
+import { InterventionService } from '../../../Services/intervention.service';
+import { MapsService } from '../../../Services/maps.service';
 import { DialogueCarteComponent } from '../../dialogues/dialogue-carte/dialogue-carte.component';
+import { DialogueInterventionComponent } from '../../dialogues/dialogue-intervention/dialogue-intervention.component';
 
 @Component({
   selector: 'app-intervention-card',

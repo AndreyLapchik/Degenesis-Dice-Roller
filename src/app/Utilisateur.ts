@@ -3,8 +3,7 @@ export class Utilisateur {
     public login: string;
     public mdp: string;
     public code: string;
-    public nom: string;    
-
+    public nom: string;
 
     static rempli(utilisateur: Utilisateur): boolean {
         return (

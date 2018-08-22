@@ -1,15 +1,14 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Router } from '@angular/router';
-import { Chantier } from '../../../Chantier';
-import { DataService } from '../../../Services/data.service';
-import { MapsService } from '../../../Services/maps.service';
-import { DomSanitizer } from '@angular/platform-browser';
-import { InterventionService } from '../../../Services/intervention.service';
-
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+
+import { Chantier } from '../../../Chantier';
+import { InterventionService } from '../../../Services/intervention.service';
+import { MapsService } from '../../../Services/maps.service';
+import { DialogueCarteComponent } from '../../dialogues/dialogue-carte/dialogue-carte.component';
 import { DialogueConfirmationComponent } from '../../dialogues/dialogue-confirmation/dialogue-confirmation.component';
 import { DialogueErreurComponent } from '../../dialogues/dialogue-erreur/dialogue-erreur.component';
-import { DialogueCarteComponent } from '../../dialogues/dialogue-carte/dialogue-carte.component';
 
 @Component({
     selector: 'app-chantier-card',
@@ -18,15 +17,15 @@ import { DialogueCarteComponent } from '../../dialogues/dialogue-carte/dialogue-
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class ChantierCardComponent implements OnInit {
+export class ChantierCardComponent {
 
     @Input() chantier: Chantier;
-    @Input() lien = '';
 
+    lien = '';
     actualWidth: number;
 
-    constructor(private route: Router,
-        public data: DataService,
+    constructor(
+        private route: Router,
         public maps: MapsService,
         public interService: InterventionService,
         public dialog: MatDialog,
@@ -36,11 +35,8 @@ export class ChantierCardComponent implements OnInit {
         this.actualWidth = window.innerWidth;
     }
 
-    ngOnInit() {
-    }
-
     onResize(event) {
-        this.actualWidth = event.target.innerWidth;        
+        this.actualWidth = event.target.innerWidth;
     }
 
     getMapSrc() {
@@ -73,7 +69,7 @@ export class ChantierCardComponent implements OnInit {
             });
             dialogRef.afterClosed().subscribe(result => {
                 if (result && result.dateAppel) {
-                    //Créé une nouvelle intervention d'un chantier 
+                    //Créé une nouvelle intervention d'un chantier
                     console.log(result.dateAppel);
                     this.interService.insertIntervention(this.chantier, result.dateAppel, result.typeinter);
                     this.route.navigate(['accueil/intervention']);

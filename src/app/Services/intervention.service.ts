@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
-import { DataService } from './data.service';
-import { Intervention } from '../Intervention';
-import { Chantier } from '../Chantier';
-import { Observable } from 'rxjs';
-import { Utilisateur } from '../utilisateur';
-import { HttpService } from './http.service';
-import { HttpClient } from '@angular/common/http';
 import { formatDate } from '@angular/common';
-import { DateTimePipe } from '../Pipe/dateTime.pipe';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
+import { Observable } from 'rxjs';
+
+import { Chantier } from '../Chantier';
+import { Intervention } from '../Intervention';
+import { DateTimePipe } from '../Pipe/dateTime.pipe';
+import { Utilisateur } from '../utilisateur';
+import { DataService } from './data.service';
+import { HttpService } from './http.service';
 import { IndexedDBService } from './indexedDB.service';
 
 @Injectable({
@@ -17,7 +18,6 @@ import { IndexedDBService } from './indexedDB.service';
 export class InterventionService {
 
   interventions: Intervention[] = [];
-
   nbInterTemp: number = 0;
 
   constructor(
@@ -65,7 +65,7 @@ export class InterventionService {
       inter.adr3 = chantier.adr3;
       inter.cp = chantier.cp;
       inter.ville = chantier.ville;
-      inter.pays = chantier.pays;      
+      inter.pays = chantier.pays;
       inter.codeope = this._data.authenticatedUser.value.code;
       inter.intervenant = this._data.authenticatedUser.value.nom;
       inter.dateinter = formatDate(new Date(), "dd/MM/yyyy", "fr");
@@ -119,13 +119,10 @@ export class InterventionService {
 
   // Supprimer une intervention
   public deleteIntervention(inter: Intervention) {
-    console.log("avant: ");
-    console.log(this.interventions);
-
-    this.interventions = this.interventions.filter(item => (item.idchantier !== inter.idchantier && item.dateappel !== inter.dateappel));
-    console.log("apres: ");
-    console.log(this.interventions);
-
+    this.interventions = this.interventions.filter(item => (
+      item.idchantier !== inter.idchantier &&
+      item.dateappel !== inter.dateappel
+    ));
     this.saveInterventions();
   }
 
@@ -142,7 +139,7 @@ export class InterventionService {
           this.indexedDB.validatePhotos(intervention).then(() => {
             this.pushPhotosToServer(intervention);
           }, (err) => {
-            console.log(err);            
+            console.log(err);
           });
 
           if (this.nbInterTemp > 0) {
@@ -172,7 +169,7 @@ export class InterventionService {
   public pushPhotosToServer(inter: Intervention) {
     console.log("Envoi des photos");
     this.indexedDB.getInterPhotos(inter, 1).then(photos => {
-      console.log("envoi de photo(s)");      
+      console.log("envoi de photo(s)");
       photos.forEach(photo => {
         this._http.post(this.httpService.PUSH_PHOTO, JSON.stringify(photo)).subscribe(
           res => {
@@ -192,7 +189,7 @@ export class InterventionService {
     console.log("Envoi des photos");
     this.indexedDB.getPhotos(1).then(photos => {
       console.log(photos);
-      
+
       photos.forEach(photo => {
         this._http.post(this.httpService.PUSH_PHOTO, JSON.stringify(photo)).subscribe(
           res => {
@@ -224,6 +221,4 @@ export class InterventionService {
       });
     }
   }
-
-
 }

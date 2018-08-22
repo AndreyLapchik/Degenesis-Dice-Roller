@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+
 import { Chantier } from '../Chantier';
 
 @Pipe({
@@ -13,10 +14,10 @@ export class ChantierSearchPipe implements PipeTransform {
     if (!mot) {
       return chantiers;
     }
-    
-    return chantiers.filter(chantier => 
-      (this.myLowerCase(chantier.nom).includes(mot.toLowerCase())  || 
-      this.myLowerCase(chantier.ville).includes(mot.toLowerCase()) || 
+
+    return chantiers.filter(chantier =>
+      (this.myLowerCase(chantier.nom).includes(mot.toLowerCase())  ||
+      this.myLowerCase(chantier.ville).includes(mot.toLowerCase()) ||
       this.myLowerCase(chantier.cp).includes(mot.toLowerCase()) ));
   }
 

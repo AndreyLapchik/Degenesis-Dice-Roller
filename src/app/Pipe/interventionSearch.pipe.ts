@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+
 import { Intervention } from '../Intervention';
 
 @Pipe({
@@ -13,9 +14,9 @@ export class InterventionSearchPipe implements PipeTransform {
     if (!mot) {
       return interventions;
     }
-    return interventions.filter(intervention => 
-      (this.myLowerCase(intervention.nom).includes(mot.toLowerCase())  || 
-      this.myLowerCase(intervention.ville).includes(mot.toLowerCase()) || 
+    return interventions.filter(intervention =>
+      (this.myLowerCase(intervention.nom).includes(mot.toLowerCase())  ||
+      this.myLowerCase(intervention.ville).includes(mot.toLowerCase()) ||
       this.myLowerCase(intervention.cp).includes(mot.toLowerCase()) ));
   }
 

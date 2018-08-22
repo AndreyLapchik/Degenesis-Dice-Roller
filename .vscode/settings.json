@@ -1,2 +1,31 @@
 {
+    "bracketPairColorizer.independentPairColors": [
+        [
+            "()",
+            [
+                "Orchid",
+                "LightSkyBlue",
+                "LightBlue"
+            ],
+            "Red"
+        ],
+        [
+            "[]",
+            [
+                "Orchid",
+                "LightSkyBlue",
+                "LightBlue"
+            ],
+            "Red"
+        ],
+        [
+            "{}",
+            [
+                "Orchid",
+                "LightSkyBlue",
+                "LightBlue"
+            ],
+            "Red"
+        ]
+    ]
 }

@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 
-import { Intervention } from '../../../Intervention';
+import { Intervention } from '../../../Classes/Intervention';
 import { IndexedDBService } from '../../../Services/indexedDB.service';
 
 @Component({

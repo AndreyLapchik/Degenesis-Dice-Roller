@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { Observable } from 'rxjs';
 
-import { Chantier } from '../Chantier';
-import { Intervention } from '../Intervention';
+import { Chantier } from '../Classes/Chantier';
+import { Intervention } from '../Classes/Intervention';
 import { DateTimePipe } from '../Pipe/dateTime.pipe';
 import { Utilisateur } from '../utilisateur';
 import { DataService } from './data.service';

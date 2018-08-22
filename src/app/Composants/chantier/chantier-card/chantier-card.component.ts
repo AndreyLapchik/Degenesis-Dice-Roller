@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
-import { Chantier } from '../../../Chantier';
+import { Chantier } from '../../../Classes/Chantier';
 import { InterventionService } from '../../../Services/intervention.service';
 import { MapsService } from '../../../Services/maps.service';
 import { DialogueCarteComponent } from '../../dialogues/dialogue-carte/dialogue-carte.component';

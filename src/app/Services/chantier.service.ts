@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-import { Chantier } from '../Chantier';
+import { Chantier } from '../Classes/Chantier';
 import { Utilisateur } from '../utilisateur';
 import { DataService } from './data.service';
 import { HttpService } from './http.service';

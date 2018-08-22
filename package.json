@@ -8,7 +8,8 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "go": "ng build --prod && cd dist && http-server -p 8080"
   },
   "private": true,
   "dependencies": {

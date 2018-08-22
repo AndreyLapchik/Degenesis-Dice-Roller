@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularIndexedDB } from 'angular2-indexeddb';
 
-import { Intervention } from '../Intervention';
+import { Intervention } from '../Classes/Intervention';
 
 @Injectable()
 export class IndexedDBService {

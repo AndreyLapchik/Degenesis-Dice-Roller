@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Chantier } from '../../Chantier';
+import { Chantier } from '../../Classes/Chantier';
 import { ChantierService } from '../../Services/chantier.service';
 
 @Component({

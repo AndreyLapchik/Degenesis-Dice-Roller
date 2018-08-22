@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { Chantier } from '../Chantier';
+import { Chantier } from '../Classes/Chantier';
 
 @Pipe({
   name: 'chantierSearch'

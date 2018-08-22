@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { Intervention } from '../Intervention';
+import { Intervention } from '../Classes/Intervention';
 
 @Pipe({
   name: 'interventionSearch'

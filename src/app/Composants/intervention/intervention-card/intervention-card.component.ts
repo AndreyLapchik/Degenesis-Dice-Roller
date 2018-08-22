@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
-import { Intervention } from '../../../Intervention';
+import { Intervention } from '../../../Classes/Intervention';
 import { InterventionService } from '../../../Services/intervention.service';
 import { MapsService } from '../../../Services/maps.service';
 import { DialogueCarteComponent } from '../../dialogues/dialogue-carte/dialogue-carte.component';

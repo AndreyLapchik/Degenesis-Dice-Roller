@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AccueilComponent } from './Composants/accueil/accueil.component';
-import { AuthGuard } from './AuthGuard';
-import { NoAuthGuard } from './NoAuthGuard';
+import { AuthGuard } from './Classes/AuthGuard';
+import { NoAuthGuard } from './Classes/NoAuthGuard';
 
 
 const routes: Routes = [

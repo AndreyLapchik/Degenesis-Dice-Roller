@@ -20,11 +20,6 @@ export class DateTimePipe implements PipeTransform {
       } else {
         return new Date(date[2] + "-" + date[1] + "-" + date[0] + "T" + "00:00:00");
       }
-
     }
-
-
-
   }
-
 }

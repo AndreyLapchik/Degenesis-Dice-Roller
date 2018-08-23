@@ -5,7 +5,6 @@ import { AccueilComponent } from './Composants/accueil/accueil.component';
 import { AuthGuard } from './Classes/AuthGuard';
 import { NoAuthGuard } from './Classes/NoAuthGuard';
 
-
 const routes: Routes = [
   { path: '', redirectTo: '/accueil/chantier', pathMatch: 'full' },
   { path: 'connexion', loadChildren: './Composants/connexion/connexion.module#ConnexionModule' , canActivate: [NoAuthGuard] }, // ,

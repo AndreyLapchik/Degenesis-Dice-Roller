@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
+import { Utilisateur } from '../../../Classes/Utilisateur';
 import { DataService } from '../../../Services/data.service';
 import { InterventionService } from '../../../Services/intervention.service';
-import { Utilisateur } from '../../../utilisateur';
+
 
 @Component({
   selector: 'app-accueil-menu',

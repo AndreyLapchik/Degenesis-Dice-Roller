@@ -4,13 +4,12 @@ import { MatSnackBar } from '@angular/material';
 import { SwUpdate } from '@angular/service-worker';
 import { fromEvent } from 'rxjs';
 
+import { Utilisateur } from './Classes/Utilisateur';
 import { ChantierService } from './Services/chantier.service';
 import { DataService } from './Services/data.service';
 import { Configuration, HttpService } from './Services/http.service';
 import { IndexedDBService } from './Services/indexedDB.service';
 import { InterventionService } from './Services/intervention.service';
-import { Utilisateur } from './utilisateur';
-
 
 @Component({
   selector: 'app-root',

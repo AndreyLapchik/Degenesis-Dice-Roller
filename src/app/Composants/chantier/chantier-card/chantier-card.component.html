@@ -1,4 +1,4 @@
-<div (window:resize)="onResize($event)">
+<div #panel (window:resize)="onResize($event)">
     <mat-expansion-panel class="desktop" (opened)="getMapSrc()" *ngIf="actualWidth > 599">
         <mat-expansion-panel-header>
             <mat-panel-title>
@@ -22,7 +22,6 @@
                     <div>
                         <mat-icon>person</mat-icon>
                         <p>
-                            <!-- {{chantier.codecli}} : {{chantier.nomcli}} -->
                             {{chantier.nomcli}}
                         </p>
                     </div>
@@ -50,7 +49,7 @@
         </mat-grid-list>
     </mat-expansion-panel>
 
-    <mat-expansion-panel class="mobile" *ngIf="actualWidth < 601">
+    <mat-expansion-panel class="mobile"  (opened)="scrollTo()" *ngIf="actualWidth < 601">
         <mat-expansion-panel-header>
             <mat-panel-title>
                 {{chantier.nom | uppercase}}
@@ -88,14 +87,11 @@
                     <mat-icon>map</mat-icon>
                     <span> {{ "carte" | uppercase }} </span>
                 </a>
-
                 <a class="boutonDemarrer" mat-button color="white" type="button" (click)="demarrerIntervention()">
                     <mat-icon>drive_eta</mat-icon>
                     <span> {{ "intervention" | uppercase }} </span>
                 </a>
-
             </mat-action-row>
-
         </ng-template>
     </mat-expansion-panel>
 </div>

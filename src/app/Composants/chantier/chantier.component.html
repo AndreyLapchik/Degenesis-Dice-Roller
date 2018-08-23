@@ -8,7 +8,7 @@
     </mat-toolbar-row>
 </mat-toolbar>
 
-<div class="body">
+<div class="body" (window:resize)="onResize($event)">
     <div class="desktop">
         <mat-card class="search-card">
             <mat-card-title>
@@ -26,16 +26,22 @@
             <mat-spinner strokeWidth="2.6" diameter="42"></mat-spinner>
         </div>
         <mat-accordion class="firstAccordion">
-            <div class="column">
-                <app-chantier-card #target [chantier]="chantier" *ngFor="let chantier of (chantiers | chantierSearch : search)">
+            <div class="column" *ngIf="actualWidth >= 1200">
+                <app-chantier-card #target [chantier]="chantier" *ngFor="let chantier of (chantiers | chantierSearch : search); trackBy: trackByName">
                 </app-chantier-card>
             </div>
 
             <!-- Virtual scroll uniquement pour les téléphones -->
-            <!-- <virtual-scroll #scroll class="mobile" [items]="(chantiers | chantierSearch : search)" [childHeight]="60" [bufferAmount]="3">
-                <app-chantier-card [chantier]="chantier" *ngFor="let chantier of scroll.viewPortItems">
+            <virtual-scroll *ngIf="actualWidth < 1200" #scroll class="mobile"
+                [items]="(chantiers | chantierSearch : search)"
+                [childHeight]="48"
+                [enableUnequalChildrenSizes]="true">
+
+                <app-chantier-card
+                    [chantier]="chantier"
+                    *ngFor="let chantier of scroll.viewPortItems">
                 </app-chantier-card>
-            </virtual-scroll> -->
+            </virtual-scroll>
 
         </mat-accordion>
 

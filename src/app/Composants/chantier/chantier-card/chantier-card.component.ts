@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -23,6 +23,8 @@ export class ChantierCardComponent {
 
     lien = '';
     actualWidth: number;
+
+    @ViewChild('panel') public panel: ElementRef;
 
     constructor(
         private route: Router,
@@ -76,5 +78,11 @@ export class ChantierCardComponent {
                 }
             });
         }
+    }
+
+    scrollTo() {
+        setTimeout(() => {
+            this.panel.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        }, 100);
     }
 }

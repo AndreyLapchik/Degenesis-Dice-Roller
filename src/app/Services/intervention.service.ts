@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { Chantier } from '../Classes/Chantier';
 import { Intervention } from '../Classes/Intervention';
 import { DateTimePipe } from '../Pipe/dateTime.pipe';
-import { Utilisateur } from '../utilisateur';
+import { Utilisateur } from '../Classes/Utilisateur';
 import { DataService } from './data.service';
 import { HttpService } from './http.service';
 import { IndexedDBService } from './indexedDB.service';

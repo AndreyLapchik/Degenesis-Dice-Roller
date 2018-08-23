@@ -5,8 +5,8 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Md5 } from 'ts-md5';
 
+import { Utilisateur } from '../Classes/Utilisateur';
 import { DialogueUtilisateurComponent } from '../Composants/dialogues/dialogue-utilisateur/dialogue-utilisateur.component';
-import { Utilisateur } from '../utilisateur';
 import { HttpService } from './http.service';
 
 const ANONYMOUS_USER = <Utilisateur>{

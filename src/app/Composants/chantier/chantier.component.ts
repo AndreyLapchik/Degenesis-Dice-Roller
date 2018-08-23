@@ -13,22 +13,30 @@ export class ChantierComponent implements OnInit {
   spinnerVisible = false;
   search: string;
   chantiers: Chantier[];
+  actualWidth: number;
 
   constructor(
     public chantierService: ChantierService
-  ) { }
+  ) {
+    this.actualWidth = window.innerWidth;
+    this.chantierService.chantiers.subscribe(
+      (chantiers) => {
+        this.chantiers = chantiers;
+      });
+  }
 
   ngOnInit() {
-    this.spinnerVisible = true;
-    this.chantierService.chantiers.subscribe((chantiers) => {
-      if (chantiers && chantiers.length > 0) {
-        this.chantiers = chantiers;
-        this.spinnerVisible = false;
-      }
-    });
+
+  }
+  trackByName(index, chantier) {
+    return chantier.nom;
   }
 
   clear() {
     this.search = '';
+  }
+
+  onResize(event) {
+    this.actualWidth = event.target.innerWidth;
   }
 }

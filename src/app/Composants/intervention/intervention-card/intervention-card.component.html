@@ -1,6 +1,6 @@
-<div class="card">
+<div #element class="card">
     <mat-accordion>
-        <mat-expansion-panel class="enCours">
+        <mat-expansion-panel (opened)="scrollIntoView()" class="enCours">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     {{intervention.nom | uppercase}}
@@ -36,28 +36,12 @@
                         Parti à {{intervention.datedepart| dateTime | date : 'mediumTime'}}
                     </p>
                 </div>
-
             </div>
         </mat-expansion-panel>
         <div class="action" *ngIf="intervention.statut == '1' || intervention.statut == '2'">
             <button class="button" mat-raised-button (click)="ouvrirCarte()"> Ouvrir la carte</button>
         </div>
-        <!-- <mat-expansion-panel *ngIf="intervention.statut == '1' || intervention.statut == '2'" (opened)="carteOpened()">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    CARTE
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="carte">
-                <iframe *ngIf="lienAPI" [src]=sanitizer.bypassSecurityTrustResourceUrl(lienAPI)>
-
-                </iframe>
-            </div>
-        </mat-expansion-panel> -->
     </mat-accordion>
-
-
-
 
     <div class="actions" [ngSwitch]="true">
         <div class="action">

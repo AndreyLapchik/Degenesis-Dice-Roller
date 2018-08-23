@@ -85,8 +85,6 @@ export class ChantierCardComponent {
     // Indique à chantierComponent le chantier vers lequel il doit scroller
     // lorsqu'un ExpansionPanel est ouvert
     scrollTo() {
-        setTimeout(() => {
-            this.eventEmitter.emit(this.chantier);
-        });
+        this.eventEmitter.emit(this.chantier);
     }
 }

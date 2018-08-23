@@ -40,7 +40,7 @@ mat-toolbar-row {
     top: 142px;
     bottom: 0;
     width: 100%;
-    background-color: rgb(255,255,255, 0.7)
+    /* background-color: rgb(255,255,255, 0.7) */
 }
 
 .desktop {

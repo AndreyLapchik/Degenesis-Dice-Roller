@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -11,9 +11,12 @@ import { DialogueInterventionComponent } from '../../dialogues/dialogue-interven
 @Component({
   selector: 'app-intervention-card',
   templateUrl: './intervention-card.component.html',
-  styleUrls: ['./intervention-card.component.css']
+  styleUrls: ['./intervention-card.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InterventionCardComponent {
+
+  @ViewChild("element") card: ElementRef;
 
   @Input() intervention: Intervention;
   chargement: boolean = false;
@@ -53,6 +56,15 @@ export class InterventionCardComponent {
     public interService: InterventionService,
     public sanitizer: DomSanitizer
   ) { }
+
+  scrollIntoView() {
+    setTimeout(() => {
+      this.card.nativeElement.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest" });
+    }, 250); // Pour attendre la fin de l'ouverture du MatExpansionPanel
+  }
 
   ouvrirCarte() {
     this.dialog.open(DialogueCarteComponent, {

@@ -1,5 +1,6 @@
 .card {
-    margin-bottom: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 mat-accordion {
@@ -21,7 +22,7 @@ mat-accordion {
 mat-card-title, mat-card-content {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;   
+    justify-content: space-between;
 }
 
 mat-card-title .titleElem {
@@ -53,7 +54,7 @@ iframe {
 
 mat-raised-button {
     font-weight: bolder;
-    display : flex;    
+    display : flex;
 }
 
 .example-radio-group .example-radio-button  {
@@ -96,20 +97,20 @@ mat-expansion-panel {
 
 /*Responsive*/
 /* gestion largeur */
-/* @media screen and (max-width: 250px) {   
+/* @media screen and (max-width: 250px) {
     mat-card-actions button {
         margin-bottom: 1.8%;
     }
 } */
 
 /* gestion hauteur */
-/* @media screen and (max-height: 650px), screen and (max-width: 250px) {   
+/* @media screen and (max-height: 650px), screen and (max-width: 250px) {
     mat-card { margin-bottom: 4px }
-    mat-card-subtitle { margin-bottom: 3px }    
+    mat-card-subtitle { margin-bottom: 3px }
     mat-card-content { margin-bottom: 2px }
 }
 
-@media screen and (max-height: 420px), screen and (max-width: 250px) {   
-    mat-card-subtitle { margin-bottom: 2px }    
+@media screen and (max-height: 420px), screen and (max-width: 250px) {
+    mat-card-subtitle { margin-bottom: 2px }
     mat-card-content { margin-bottom: 1px }
 } */

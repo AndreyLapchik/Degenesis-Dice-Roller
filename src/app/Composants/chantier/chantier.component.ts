@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { VirtualScrollComponent } from 'angular2-virtual-scroll';
 
 import { Chantier } from '../../Classes/Chantier';
 import { ChantierService } from '../../Services/chantier.service';
@@ -8,7 +9,10 @@ import { ChantierService } from '../../Services/chantier.service';
   templateUrl: './chantier.component.html',
   styleUrls: ['./chantier.component.css', './chantier.component.scss']
 })
-export class ChantierComponent implements OnInit {
+export class ChantierComponent {
+
+  @ViewChild(VirtualScrollComponent)
+  private virtualScroll: VirtualScrollComponent;
 
   spinnerVisible = false;
   search: string;
@@ -25,9 +29,10 @@ export class ChantierComponent implements OnInit {
       });
   }
 
-  ngOnInit() {
-
+  onOutput(chantier: Chantier) {
+    this.virtualScroll.scrollInto(chantier);
   }
+
   trackByName(index, chantier) {
     return chantier.nom;
   }

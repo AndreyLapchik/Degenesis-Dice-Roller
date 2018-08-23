@@ -1,4 +1,4 @@
-<div #panel (window:resize)="onResize($event)">
+<div (window:resize)="onResize($event)">
     <mat-expansion-panel class="desktop" (opened)="getMapSrc()" *ngIf="actualWidth > 599">
         <mat-expansion-panel-header>
             <mat-panel-title>

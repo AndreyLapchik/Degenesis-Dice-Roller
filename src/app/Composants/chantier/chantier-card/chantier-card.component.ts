@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -10,6 +10,7 @@ import { DialogueCarteComponent } from '../../dialogues/dialogue-carte/dialogue-
 import { DialogueConfirmationComponent } from '../../dialogues/dialogue-confirmation/dialogue-confirmation.component';
 import { DialogueErreurComponent } from '../../dialogues/dialogue-erreur/dialogue-erreur.component';
 
+
 @Component({
     selector: 'app-chantier-card',
     templateUrl: './chantier-card.component.html',
@@ -20,11 +21,10 @@ import { DialogueErreurComponent } from '../../dialogues/dialogue-erreur/dialogu
 export class ChantierCardComponent {
 
     @Input() chantier: Chantier;
+    @Output() eventEmitter = new EventEmitter<Chantier>();
 
     lien = '';
     actualWidth: number;
-
-    @ViewChild('panel') public panel: ElementRef;
 
     constructor(
         private route: Router,
@@ -62,16 +62,18 @@ export class ChantierCardComponent {
     demarrerIntervention() {
         if (this.interService.isInterventionEnCours()) {
             this.dialog.open(DialogueErreurComponent, {
-                //width: '250px',
                 data: { texte: 'Vous avez déjà une intervention en cours.' }
             });
         } else {
             let dialogRef = this.dialog.open(DialogueConfirmationComponent, {
-                data: { texte: "Veuillez entrer la date d'appel pour démarrer l'intervention.", date: new Date() }
+                data: {
+                    texte: "Veuillez entrer la date d'appel pour démarrer l'intervention.",
+                    date: new Date()
+                }
             });
             dialogRef.afterClosed().subscribe(result => {
                 if (result && result.dateAppel) {
-                    //Créé une nouvelle intervention d'un chantier
+                    //Créé une nouvelle intervention pour le chantier
                     console.log(result.dateAppel);
                     this.interService.insertIntervention(this.chantier, result.dateAppel, result.typeinter);
                     this.route.navigate(['accueil/intervention']);
@@ -80,9 +82,11 @@ export class ChantierCardComponent {
         }
     }
 
+    // Indique à chantierComponent le chantier vers lequel il doit scroller
+    // lorsqu'un ExpansionPanel est ouvert
     scrollTo() {
         setTimeout(() => {
-            this.panel.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-        }, 100);
+            this.eventEmitter.emit(this.chantier);
+        });
     }
 }

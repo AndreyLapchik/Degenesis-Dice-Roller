@@ -25,7 +25,7 @@
         <div class="contSpin" *ngIf="spinnerVisible">
             <mat-spinner strokeWidth="2.6" diameter="42"></mat-spinner>
         </div>
-        <mat-accordion class="firstAccordion">
+        <mat-accordion class="firstAccordion" [multi]="true">
             <div class="column" *ngIf="actualWidth >= 1200">
                 <app-chantier-card #target [chantier]="chantier" *ngFor="let chantier of (chantiers | chantierSearch : search); trackBy: trackByName">
                 </app-chantier-card>
@@ -39,7 +39,8 @@
 
                 <app-chantier-card
                     [chantier]="chantier"
-                    *ngFor="let chantier of scroll.viewPortItems">
+                    *ngFor="let chantier of scroll.viewPortItems"
+                    (eventEmitter)="onOutput($event)">
                 </app-chantier-card>
             </virtual-scroll>
 

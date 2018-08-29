@@ -21,5 +21,4 @@ export class InterventionComponent {
   envoiInter() {
     this.interService.pushInterventionsCompletes();
   }
-
 }

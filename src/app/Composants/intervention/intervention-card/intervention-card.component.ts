@@ -68,7 +68,7 @@ export class InterventionCardComponent {
 
   ouvrirCarte() {
     this.dialog.open(DialogueCarteComponent, {
-      panelClass: 'blublu',
+      panelClass: 'monPanel',
       width: "95vw",
       height: "95vh",
       maxWidth: "95vw",
@@ -142,6 +142,7 @@ export class InterventionCardComponent {
           this.interService.pushInterventionToServer(this.intervention);
         });
     } else {
+      this.chargement = false;
       this.intervention.statut = '4';
       this.interService.pushInterventionToServer(this.intervention);
     }
@@ -149,7 +150,7 @@ export class InterventionCardComponent {
 
   public ouvrirFormulaire() {
     let dialogRef = this.dialog.open(DialogueInterventionComponent, {
-      panelClass: 'blublu',
+      panelClass: 'monPanel',
       maxWidth: "95vw",
       maxHeight: "95vh",
 

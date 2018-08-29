@@ -51,7 +51,7 @@ export class ChantierCardComponent {
 
     voirCarte() {
         this.dialog.open(DialogueCarteComponent, {
-            panelClass: 'blublu',
+            panelClass: 'monPanel',
             width: "95vw",
             height: "95vh",
             maxWidth: "95vw",

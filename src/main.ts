@@ -9,7 +9,8 @@ if (environment.production) {
 }
 
 platformBrowserDynamic()
-  .bootstrapModule(AppModule);
+  .bootstrapModule(AppModule).catch(err => console.log(err));
+
   //   if ('serviceWorker' in navigator && environment.production) {
   //     navigator.serviceWorker.register('/ngsw-worker.js');
   //   }
@@ -18,17 +19,3 @@ platformBrowserDynamic()
 //     registerServiceWorker('sw');
 //   });
 
-// function registerServiceWorker(swName: string) {
-//   if ('serviceWorker' in navigator) {
-//     navigator.serviceWorker
-//       .register(`/${swName}.js`)
-//       .then(reg => {
-//         console.log('[App] Successful service worker registration', reg);
-//       })
-//       .catch(err =>
-//         console.error('[App] Service worker registration failed', err)
-//       );
-//   } else {
-//     console.error('[App] Service Worker API is not supported in current browser');
-//   }
-// }

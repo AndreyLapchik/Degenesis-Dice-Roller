@@ -10,11 +10,10 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './Classes/AuthGuard';
-import { AccueilMenuComponent } from './Composants/accueil/accueil-menu/accueil-menu.component';
+import { NoAuthGuard } from './Classes/NoAuthGuard';
 import { AccueilComponent } from './Composants/accueil/accueil.component';
 import { DialogueCarteComponent } from './Composants/dialogues/dialogue-carte/dialogue-carte.component';
 import { DialogueUtilisateurComponent } from './Composants/dialogues/dialogue-utilisateur/dialogue-utilisateur.component';
-import { NoAuthGuard } from './Classes/NoAuthGuard';
 import { ChantierService } from './Services/chantier.service';
 import { DataService } from './Services/data.service';
 import { Configuration, HttpService } from './Services/http.service';
@@ -22,17 +21,15 @@ import { IndexedDBService } from './Services/indexedDB.service';
 import { InterventionService } from './Services/intervention.service';
 import { SharedModule } from './shared.module';
 
-// LOCAL
 @NgModule({
   entryComponents: [
+    AccueilComponent,
     DialogueUtilisateurComponent,
-    DialogueCarteComponent,
-    AccueilComponent
+    DialogueCarteComponent
   ],
   declarations: [
     AppComponent,
     AccueilComponent,
-    AccueilMenuComponent,
     DialogueUtilisateurComponent,
     DialogueCarteComponent,
   ],

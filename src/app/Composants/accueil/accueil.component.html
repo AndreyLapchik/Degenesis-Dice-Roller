@@ -1,5 +1,63 @@
-<app-accueil-menu [nbInter]="interService.nbInterTemp">
-</app-accueil-menu>
+<div class='menu'>
+
+
+
+<nav class="large-header">
+
+        <button mat-button type="button">
+            <img alt="DAT Security" height=60px width=60px src="..\assets\icons\DAT Security.png">
+            <span> DAT SECURITY </span>
+        </button>
+
+        <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="/accueil/chantier">
+            <span class="mat-button-wrapper">CHANTIERS</span>
+            <div class="mat-button-ripple mat-ripple" matripple=""></div>
+            <div class="mat-button-focus-overlay"></div>
+        </a>
+        <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="/accueil/intervention">
+            <span class="mat-button-wrapper">MES INTERVENTIONS</span>
+            <div class="mat-button-ripple mat-ripple" matripple=""></div>
+            <div class="mat-button-focus-overlay"></div>
+        </a>
+        <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="/accueil/information">
+            <span class="mat-button-wrapper">MES INFORMATIONS</span>
+            <div class="mat-button-ripple mat-ripple" matripple=""></div>
+            <div class="mat-button-focus-overlay"></div>
+        </a>
+
+        <div class="flex-spacer"></div>
+
+        <button mat-button color="white" type="button" class="btLienAccueil" (click)="interService.logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span> Déconnexion </span>
+        </button>
+    </nav>
+
+    <nav class="small-header">
+        <button mat-button type="button">
+            <img alt="DAT Security" height=43px width=43px src="..\assets\icons\DAT Security.png">
+            <span> DAT SECURITY </span>
+        </button>
+        <div class="flex-spacer"></div>
+        <button mat-button color="white" type="button" class="btLienAccueil" (click)="interService.logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span> Déconnexion </span>
+        </button>
+    </nav>
+
+    <nav class="small-header">
+        <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="/accueil/chantier">
+            <span class="mat-button-wrapper">CHANTIER</span>
+        </a>
+        <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="/accueil/intervention">
+            <span class="mat-button-wrapper" [matBadgeHidden]="!interService.nbInterTemp" [matBadge]="interService.nbInterTemp" matBadgeColor="warn" matBadgeOverlap="true" matBadgeSize="medium" >
+                INTERVENTION
+            </span>
+        </a>
+        <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="/accueil/information">
+            <span class="mat-button-wrapper">INFORMATION</span>
+        </a>
+    </nav>
 
 <div class="contenu">
     <router-outlet></router-outlet>

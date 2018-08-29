@@ -41,7 +41,6 @@ mat-toolbar-row {
     bottom: 0;
     right: 0;
     left: 0;
-    /* background-color: rgb(255,255,255, 0.7) */
 }
 
 .desktop {
@@ -142,8 +141,6 @@ mat-expansion-panel {
         width: 0;
     }
 }
-
-
 
 mat-expansion-panel {
     margin-bottom: 10px;

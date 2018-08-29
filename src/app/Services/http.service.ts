@@ -47,7 +47,4 @@ export class HttpService {
   get PUSH_PHOTO() {
     return this.actionUrl + this.PHOTO;
   }
-
-
-
 }

@@ -16,12 +16,12 @@ html {
     font-family: -apple-system, BlinkMacSystemFont, Roboto, Noto, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
-.blublu .mat-dialog-container {
+.monPanel .mat-dialog-container {
     padding: 12px 12px 24px 12px;
 }
 
 .fill-remaining-space {
-    /* This fills the remaining space, by using flexbox. 
+    /* This fills the remaining space, by using flexbox.
        Every toolbar row uses a flexbox row layout. */
     flex: 1 1 auto;
 }
@@ -46,49 +46,10 @@ p {
     font-size: 16px;
 }
 
-/* html, body, mat-sidenav-container {
-    width: 100%;
-    height: 99.9%; 
-} */
-
- /* body, mat-sidenav-container, mat-sidenav-content {
-    margin: 0;
-    padding: 0;
-} */
-
-mat-sidenav {
-    min-width: 123px;
-    max-width: 420px;
-    width: 72%;
-    padding: 4px 0px 7px;
-    margin: 0;
-}
-
-
-/* .basic-container {
-    margin: 0;
-    padding: 0;
-}   */
-
-
 /* https://www.w3schools.com/css/css_margin.asp */
 .container {
     margin: 42px 0.5% 0.42%;
     /* padding: 4px 2px 3px 1px; */
-}
-
-/* everywhere else */
-/* * {
-    font-family: -apple-system, BlinkMacSystemFont, Roboto, Noto, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', Arial, sans-serif
-} */
-
-.icoCouleurDesact, .icoCouleurDesactB, .elemInfoEnteteDetail {
-    color: rgb(145, 145, 145); /* Gris = placeholder de recherche */
-}
-
-.boutonAction {
-    margin: 0;
-    padding: 0;
 }
 
 .material-icons {
@@ -114,10 +75,9 @@ mat-form-field button[mat-button] {
     padding-right: 7.8px;
 }
 
-  
-h1 { 
+h1 {
     color: rgb(0, 112, 150);
-}  
+}
 h2, h3, .containerLienSoc a {
     color: #283593; /*rgb(8, 191, 233);*/
 }
@@ -129,22 +89,10 @@ h4 {
     font-weight: lighter;
 }
 
-
-.containerLienSoc a {
-    text-decoration: none;
-    font-weight: lighter;
-    font-size: 0.9rem;
-}
-
-.containerLienSoc a:hover span, .containerLienSoc a:hover h4 {
-    text-decoration: underline;
-    color: #101749;
-}
-
 /*Responsive*/
 
 /* gestion hauteur */
-@media screen and (max-height: 580px) {   
+@media screen and (max-height: 580px) {
     h2 {
         font-size: 1.4em;
     }
@@ -169,7 +117,7 @@ h4 {
 @media screen and (max-height: 420px) {
     h2 {
         font-size: 1.1em;
-    } 
+    }
 
     h3 {
         font-size: .9em;
@@ -179,8 +127,6 @@ h4 {
         font-size: .7em;
     }
 }
-
-
 
 button.mat-menu-item {
     line-height: 24px !important;

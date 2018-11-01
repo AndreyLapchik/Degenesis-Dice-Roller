@@ -1,64 +1,150 @@
-<div class='menu'>
-
-
-
-<nav class="large-header">
-
-        <button mat-button type="button">
-            <img alt="DAT Security" height=60px width=60px src="..\assets\icons\DAT Security.png">
-            <span> DAT SECURITY </span>
-        </button>
-
-        <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="/accueil/chantier">
-            <span class="mat-button-wrapper">CHANTIERS</span>
-            <div class="mat-button-ripple mat-ripple" matripple=""></div>
-            <div class="mat-button-focus-overlay"></div>
-        </a>
-        <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="/accueil/intervention">
-            <span class="mat-button-wrapper">MES INTERVENTIONS</span>
-            <div class="mat-button-ripple mat-ripple" matripple=""></div>
-            <div class="mat-button-focus-overlay"></div>
-        </a>
-        <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="/accueil/information">
-            <span class="mat-button-wrapper">MES INFORMATIONS</span>
-            <div class="mat-button-ripple mat-ripple" matripple=""></div>
-            <div class="mat-button-focus-overlay"></div>
-        </a>
-
-        <div class="flex-spacer"></div>
-
-        <button mat-button color="white" type="button" class="btLienAccueil" (click)="interService.logout()">
-            <mat-icon>exit_to_app</mat-icon>
-            <span> Déconnexion </span>
-        </button>
+<div class='page' [ngStyle]="{ 
+    'background-color': gameMode ? '#6b6b6b' : 'white',
+    'color': !gameMode ? 'black' : 'white' 
+}">
+    <nav class="header" [ngStyle]="{ 
+        'background-color': gameMode ? '#dadada' : 'red',
+        'color': !gameMode ? 'white' : 'red' 
+    }">
+        <div class="headerButtons">
+            <button mat-button class="homeButton" (click)="infos()" type="button">
+                <img *ngIf="gameMode" alt="Degenesis Logo" height=40px width=40px src="..\assets\icons\red-logo.png">
+                <img *ngIf="!gameMode" alt="Degenesis Logo" height=40px width=40px src="..\assets\icons\white-logo.png">
+                <span> DEGENESIS DICE ROLLER </span>
+            </button>
+            <div class="flex-spacer"></div>
+            <button mat-button class="homeButton" (click)="changeMode()" type="button">
+                <!-- <img alt="Degenesis Logo" height=40px width=40px src="..\assets\icons\white-logo.png"> -->
+                <span i18n> {{gameMode ? "IMMERSION" : "VANILLA"}} </span>
+            </button>
+        </div>
     </nav>
 
-    <nav class="small-header">
-        <button mat-button type="button">
-            <img alt="DAT Security" height=43px width=43px src="..\assets\icons\DAT Security.png">
-            <span> DAT SECURITY </span>
-        </button>
-        <div class="flex-spacer"></div>
-        <button mat-button color="white" type="button" class="btLienAccueil" (click)="interService.logout()">
-            <mat-icon>exit_to_app</mat-icon>
-            <span> Déconnexion </span>
-        </button>
-    </nav>
 
-    <nav class="small-header">
-        <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="/accueil/chantier">
-            <span class="mat-button-wrapper">CHANTIER</span>
-        </a>
-        <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="/accueil/intervention">
-            <span class="mat-button-wrapper" [matBadgeHidden]="!interService.nbInterTemp" [matBadge]="interService.nbInterTemp" matBadgeColor="warn" matBadgeOverlap="true" matBadgeSize="medium" >
-                INTERVENTION
-            </span>
-        </a>
-        <a class="docs-navbar-link" mat-button="" tabindex="0" aria-disabled="false" routerLink="/accueil/information">
-            <span class="mat-button-wrapper">INFORMATION</span>
-        </a>
-    </nav>
 
-<div class="contenu">
-    <router-outlet></router-outlet>
+    <!-- VANILLA MODE -->
+    <div class="title" *ngIf="!gameMode" i18n>
+        {{rolled ? "RESULTAT" : "NOMBRE DE DES" }}
+
+    </div>
+    <mat-button-toggle-group [ngStyle]="{ 'height': rolled || gameMode ? '0' : '' }" class="diceSelect" #group="matButtonToggleGroup">
+        <mat-button-toggle value={{vanillaDices[i]}} *ngFor=" let dice of vanillaDices; index as i">
+            {{vanillaDices[i]}}
+        </mat-button-toggle>
+    </mat-button-toggle-group>
+    <!-- RESULT -->
+    <mat-button-toggle-group [ngStyle]="{ 'height': !rolled || gameMode ? '0' : '' }" *ngIf="rolled" (click)="reset()"
+        class="diceResult">
+        <mat-button-toggle [ngStyle]="{
+                            'color': resultDices[i] == 6 ? 'red' : 'white',
+                            'background-color': resultDices[i] == 0 ? 'transparent' : 'black'
+                        }"
+            value={{resultDices[i]}} *ngFor=" let dice of resultDices; index as i">
+            {{resultDices[i]}}
+        </mat-button-toggle>
+    </mat-button-toggle-group>
+
+    <!-- IMMERSION MODE -->
+    <div>
+
+        <div *ngIf="gameMode" class="titleImmersion" i18n>
+            ATTRIBUT
+        </div>
+        <!-- DICE -->
+        <mat-button-toggle-group [ngStyle]="{ 'height': rolled || !gameMode ? '0' : '100%' }" class="diceSelect"
+            #group1="matButtonToggleGroup">
+            <mat-button-toggle value={{ImmersionDices[i]}} *ngFor=" let dice of ImmersionDices; index as i">
+                {{ImmersionDices[i]}}
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+        <!-- RESULT -->
+        <mat-button-toggle-group [ngStyle]="{ 'height': !rolled || !gameMode ? '0' : '100%' }" *ngIf="rolled" (click)="reset()"
+            class="diceResult">
+            <mat-button-toggle [ngStyle]="{
+                                'color': resultAttrDices[i] == 6 ? 'red' : 'white',
+                                'background-color': resultAttrDices[i] == 0 ? 'transparent' : 'black'
+                            }"
+                value={{resultAttrDices[i]}} *ngFor=" let dice of resultAttrDices; index as i">
+                {{resultAttrDices[i]}}
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+
+        <div *ngIf="gameMode" class="titleImmersion" i18n>
+            COMPETENCE
+        </div>
+        <!-- DICE -->
+        <mat-button-toggle-group [ngStyle]="{ 'height': rolled || !gameMode ? '0' : '100%' }" class="diceSelect"
+            #group2="matButtonToggleGroup">
+            <mat-button-toggle value={{ImmersionDices[i]}} *ngFor=" let dice of ImmersionDices; index as i">
+                {{ImmersionDices[i]}}
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+        <!-- RESULT -->
+        <mat-button-toggle-group [ngStyle]="{ 'height': !rolled || !gameMode ? '0' : '100%' }" *ngIf="rolled" (click)="reset()"
+            class="diceResult">
+            <mat-button-toggle [ngStyle]="{
+                            'color': resultCompDices[i] == 6 ? 'red' : 'white',
+                            'background-color': resultCompDices[i] == 0 ? 'transparent' : 'black'
+                        }"
+                value={{resultCompDices[i]}} *ngFor=" let dice of resultCompDices; index as i">
+                {{resultCompDices[i]}}
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+
+        <!-- {{group.value}} -->
+        <div class="content" *ngIf="resultats">
+            <div class="ligne" *ngFor="let res of resultats.slice().reverse()">
+                <div *ngIf="!res.echecCritique" >
+                        <span *ngIf="!gameMode" i18n>
+                                {{res.nbSucces}} SUCCES 
+                        </span>
+                        <span *ngIf="gameMode" i18n>
+                                {{res.nbSucces}} ({{res.nbSuccesAttr}}/{{res.nbSuccesComp}}) SUCCES 
+                        </span>
+                        <span i18n>
+                            {{res.nbDeclencheurs ?
+                            "DONT " + (res.nbDeclencheurs > 1 ? res.nbDeclencheurs + " DECLENCHEURS " : res.nbDeclencheurs + "
+                            DECLENCHEUR")
+                            : "" }}
+                        </span>                    
+                    <div *ngIf="res.nbDeclencheurs > 0" [ngStyle]="{'color': res.color}" i18n>
+                        {{ res.effet }} !
+                    </div>
+                </div>
+                <div style="color: red" *ngIf="res.echecCritique" i18n>
+                    {{"ECHEC CRITIQUE ! (" + res.nbSucces + " SUCCES)"}}
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer Vanilla" *ngIf="!gameMode">
+        <button mat-raised-button [disabled]="!group.value" class="actionButton" (click)="rollVanilla(group.value)" i18n>
+            LANCER
+        </button>
+        <button mat-raised-button [disabled]="resultats.length == 0" class="actionButton" (click)="clear()" i18n>
+            EFFACER
+        </button>
+    </div>
+    <div class="footer Immersion" *ngIf="gameMode">
+        <button mat-raised-button [disabled]="!group1.value && !group2.value" class="actionButton" (click)="rollImmersion(group1.value, group2.value)" i18n>
+            LANCER
+        </button>
+        <button mat-raised-button [disabled]="resultats.length == 0" class="actionButton" (click)="clear()" i18n>
+            EFFACER
+        </button>
+    </div>
 </div>
+<!-- <div class="footer">
+            <button mat-raised-button [disabled]="!group.value" class="actionButton" (click)="rollImmersion(group1.value, group2.value)" [ngStyle]="{ 
+                'background-color': gameMode ? '#dadada' : 'red',
+                'color': !gameMode ? 'white' : 'red' }">
+                LANCER
+            </button>
+            <button mat-raised-button [disabled]="resultats.length == 0" class="actionButton" (click)="clear()" [ngStyle]="{ 
+                'background-color': gameMode ? '#dadada' : 'red',
+                'color': !gameMode ? 'white' : 'red' }">
+                EFFACER
+            </button>
+        </div> -->

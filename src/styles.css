@@ -3,138 +3,22 @@
 /* Application-wide Styles */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-html {
+body {
     min-width: 320px;
-    background-position: center;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background-image: url(background.jpg);
-    background-size: cover;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
     font-family: -apple-system, BlinkMacSystemFont, Roboto, Noto, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
-.monPanel .mat-dialog-container {
-    padding: 12px 12px 24px 12px;
-}
 
-.fill-remaining-space {
-    /* This fills the remaining space, by using flexbox.
-       Every toolbar row uses a flexbox row layout. */
-    flex: 1 1 auto;
-}
-
-.mat-expansion-panel-header {
-    font-size: 17px;
+.mat-button-toggle div {
+    padding: 0px;
 }
 
 .mat-simple-snackbar-action {
-    color: yellow;
-}
-
-.mat-expansion-panel-spacing {
-    margin: 0px;
-}
-
-.mat-expansion-panel-header-description {
-    font-size: 15px;
-}
-
-p {
-    font-size: 16px;
-}
-
-/* https://www.w3schools.com/css/css_margin.asp */
-.container {
-    margin: 42px 0.5% 0.42%;
-    /* padding: 4px 2px 3px 1px; */
-}
-
-.material-icons {
-    vertical-align: middle;
-}
-
-/* Rules for sizing the icon. */
-.material-icons.md-18 { font-size: 18px; }
-.material-icons.md-24 { font-size: 24px; } /* Preferred icon size */
-.material-icons.md-36 { font-size: 36px; }
-.material-icons.md-48 { font-size: 48px; }
-
-/* Rules for using icons as black on a light background. */
-.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
-.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
-
-/* Rules for using icons as white on a dark background. */
-.material-icons.md-light { color: rgba(255, 255, 255, 1); }
-.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
-
-mat-form-field button[mat-button] {
-    padding-left: 3.3px;
-    padding-right: 7.8px;
-}
-
-h1 {
-    color: rgb(0, 112, 150);
-}
-h2, h3, .containerLienSoc a {
-    color: #283593; /*rgb(8, 191, 233);*/
-}
-h2, h3 {
-    /*color: #444;*/
-    font-weight: lighter;
-}
-h4 {
-    font-weight: lighter;
-}
-
-/*Responsive*/
-
-/* gestion hauteur */
-@media screen and (max-height: 580px) {
-    h2 {
-        font-size: 1.4em;
-    }
-
-    h3 {
-        font-size: 1.1em;
-    }
-}
-@media screen and (max-height: 520px) {
-    h2 {
-        font-size: 1.2em;
-    }
-
-    h3 {
-        font-size: 1.0em;
-    }
-
-    h4 {
-        font-size: .8em;
-    }
-}
-@media screen and (max-height: 420px) {
-    h2 {
-        font-size: 1.1em;
-    }
-
-    h3 {
-        font-size: .9em;
-    }
-
-    h4 {
-        font-size: .7em;
-    }
-}
-
-button.mat-menu-item {
-    line-height: 24px !important;
-}
-a.mat-menu-item > mat-icon {
-    margin-bottom: 14px;
-}
-.mat-icon svg {
-    height: 24px;
-    width: 24px;
+    color: red;
 }

@@ -1,83 +1,139 @@
-.docs-navbar .docs-navbar-link {
-    text-decoration: inherit;
-    flex: 1;
+.page {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+    color: black;
 }
+
+.header {
+    background: rgb(255, 0, 0);
+    flex: 0 1 auto;
+    color: white;
+    height: 40px;
+}
+
+
+
+.homeButton {
+    padding-left: 6px;
+}
+
+.header .headerButtons {
+    display: flex;
+    justify-content: center;
+    height: 100%; 
+}
+
 
 .flex-spacer {
     flex-grow: 1;
 }
 
-.mat-badge-medium.mat-badge-overlap.mat-badge-after {
-    margin: 0;
+.content {
+    position: fixed;
+    top: 164px;
+    bottom: 36px;
+    margin: 12px;
+    left: 0px;
+    right: 0px;
 }
 
-.large-header {
-    background: #FFF200;
+
+.title {
+    font-size: 16px;
+    margin: 12px;
+}
+
+.titleImmersion {
+    font-size: 16px;
+    margin: 3px 12px;
+}
+.table {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    /* padding: 8px 16px; */
-}
-
-.small-header {
-    background: #FFF200;
-    display: flex;
-    justify-content: center;
-}
-
-.small-header a {
+    justify-content: space-around;
     width: 100%;
-    text-align: center;
-    padding: 0;
-    font-size: 13px;
 }
 
-@media screen and (max-width: 800px) {
-    .large-header {
-        display: none;
-    }
+
+
+.cardContent {
+    font-size: 16px;
+    
+    flex: 1 1 auto;
 }
 
-@media screen and (min-width: 800px) {
-    .small-header {
-        display: none;
-    }
-
-    .second-header {
-        display: none;
-    }
-
-    .mobile {
-        display: none;
-    }
-
+.content {
+    overflow: auto;
 }
 
-.contenu {
-    background-color: rgba(255, 255, 255, 0.7);
-    margin-top: 60px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%
-}
 
-.menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    color: black;
-}
-
-a {
+.ligne {
     display: block;
+    width:  100%;
+    text-align: center;
+    /* background-color: gray; */
 }
 
-@media screen and (max-width: 800px) {
-    .contenu {
-        margin-top: 80px;
-    }
+
+.diceSelect {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    cursor: none;
+    font-size: 16px;
+    margin: 0 12px;
 }
+
+.diceResult {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    cursor: none;
+    margin: 0 12px;
+}
+
+mat-button-toggle {
+    background-color: white;
+    margin-bottom: 5px;
+    color:black;
+    flex-basis: 15%;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    width: 100%;
+    height: 40px;
+}
+
+.Vanilla .actionButton {
+    background-color: red;
+    color: white;
+}
+
+
+.Immersion .actionButton {
+    background-color: #dadada;
+    color: red;
+}
+
+.mat-button-toggle-checked {
+    color: red;
+}
+
+.actionButton {
+    width: 100%;
+}
+
+.declencheurs {
+    text-align: center;
+}
+
+table {
+    width:  100%;
+    height: 100%;
+}
+
 

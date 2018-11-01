@@ -1,7 +1,0 @@
-{
-    "protocole": "https://",
-    "server": "localhost",
-    "port": "444/",
-    "apiUrl": "datasnap/rest/",
-    "dossierUrl": "TFServerMethods/"
-}

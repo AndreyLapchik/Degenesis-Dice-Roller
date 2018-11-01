@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "datapp": {
+    "degenesis": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -42,30 +42,55 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
-                },
-                {
-                  "replace": "src/assets/config.json",
-                  "with": "src/assets/config.prod.json"
                 }
               ]
+            },
+            "production-en": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "serviceWorker": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "baseHref": "/en/",
+              "outputPath": "dist/degenesis-en/",
+              "i18nFile": "src/locale/messages.en.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "en"
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "datapp:build"
+            "browserTarget": "degenesis:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "datapp:build:production"
+              "browserTarget": "degenesis:build:production"
+            },
+            "fr": {
+              "browserTarget": "degenesis:build:production:fr"
+            },
+            "en": {
+              "browserTarget": "degenesis:build:production:en"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "datapp:build"
+            "browserTarget": "degenesis:build"
           }
         },
         "test": {
@@ -100,7 +125,7 @@
         }
       }
     },
-    "datapp-e2e": {
+    "degenesis-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -109,7 +134,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "datapp:serve"
+            "devServerTarget": "degenesis:serve"
           }
         },
         "lint": {
@@ -126,7 +151,7 @@
       }
     }
   },
-  "defaultProject": "datapp",
+  "defaultProject": "degenesis",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

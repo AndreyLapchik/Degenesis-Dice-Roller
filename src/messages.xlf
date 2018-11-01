@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="1453ab32164dcac33c2da1520e3ec1e782613ead" datatype="html">
+        <source> <x id="INTERPOLATION" equiv-text="{{gameMode ? &quot;IMMERSION&quot; : &quot;VANILLA&quot;}}"/> </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/Composants/accueil/accueil.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0f7153018db1b550dd7101b734970780556b7dc5" datatype="html">
+        <source>
+        <x id="INTERPOLATION" equiv-text="{{rolled ? &quot;RESULTAT&quot; : &quot;NOMBRE DE DES&quot; }}"/>
+
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/Composants/accueil/accueil.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b8fbf622fa86f05c740368f2c096b4d1f9910e10" datatype="html">
+        <source>
+            ATTRIBUT
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/Composants/accueil/accueil.component.html</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f0f75862e23183330645048cf1d0deef7dceea67" datatype="html">
+        <source>
+            COMPETENCE
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/Composants/accueil/accueil.component.html</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d97eb22182d77cdf6d1d10c97a3b4dd0bb8b4973" datatype="html">
+        <source>
+                                <x id="INTERPOLATION" equiv-text="{{res.nbSucces}}"/> SUCCES 
+                        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/Composants/accueil/accueil.component.html</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d18dd1618c9920b3b99ca71f761d03d925fe5316" datatype="html">
+        <source>
+                                <x id="INTERPOLATION" equiv-text="{{res.nbSucces}}"/> (<x id="INTERPOLATION_1" equiv-text="{{res.nbSuccesAttr}}"/>/<x id="INTERPOLATION_2" equiv-text="{{res.nbSuccesComp}}"/>) SUCCES 
+                        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/Composants/accueil/accueil.component.html</context>
+          <context context-type="linenumber">101</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f1cde79a545c55a0a544ab76c935139d1a105a0a" datatype="html">
+        <source>
+                            <x id="INTERPOLATION" equiv-text="{{res.nbDeclencheurs ?
+                            &quot;DONT &quot; + (res.nbDeclencheurs &gt; 1 ? res.nbDeclencheurs + &quot; DECLENCHEURS &quot; : res.nbDeclencheurs + &quot;
+                            DECLENCHEUR&quot;)
+                            : &quot;&quot; }}"/>
+                        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/Composants/accueil/accueil.component.html</context>
+          <context context-type="linenumber">104</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fa621aa683e4c66048d84a7b691017d384735981" datatype="html">
+        <source>
+                        <x id="INTERPOLATION" equiv-text="{{ res.effet }}"/> !
+                    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/Composants/accueil/accueil.component.html</context>
+          <context context-type="linenumber">110</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1358d033ceffa9fe2a73a752678bfc6da2bf7132" datatype="html">
+        <source>
+                    <x id="INTERPOLATION" equiv-text="{{&quot;ECHEC CRITIQUE ! (&quot; + res.nbSucces + &quot; SUCCES)&quot;}}"/>
+                </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/Composants/accueil/accueil.component.html</context>
+          <context context-type="linenumber">114</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b2fa4b255e87b3ff20fd08d39c6b852a592d0980" datatype="html">
+        <source>
+            LANCER
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/Composants/accueil/accueil.component.html</context>
+          <context context-type="linenumber">123</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/Composants/accueil/accueil.component.html</context>
+          <context context-type="linenumber">131</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="911d75943c1792af39c1f15a3839211732379957" datatype="html">
+        <source>
+            EFFACER
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/Composants/accueil/accueil.component.html</context>
+          <context context-type="linenumber">126</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/Composants/accueil/accueil.component.html</context>
+          <context context-type="linenumber">134</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('datapp App', () => {
+describe('degenesis App', () => {
   let page: AppPage;
 
   beforeEach(() => {
